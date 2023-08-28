@@ -8,8 +8,11 @@
 
     <ItemGroup>
       <Folder Include="Commands\" />
-      <Folder Include="Configuration\" />
       <Folder Include="Handle\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.32.2" />
     </ItemGroup>
 
 </Project>
