@@ -14,7 +14,7 @@ public static class RoleClaimExtension
     ///  authorização
     /// </remarks>
     /// <param name="user">Classe que o método de extensão será iniciada</param>
-    /// <returns>Lista com as claims</returns>
+    /// <returns>Lista com as claims que vão compor o token</returns>
     public static IEnumerable<Claim> GetClaimsAccess(this Usuario user)
     {
         var result = new List<Claim>
@@ -35,7 +35,7 @@ public static class RoleClaimExtension
     ///  baseada nas propriedades especificadas.
     /// </remarks>
     /// <param name="user">Classe que o método de extensão será iniciada</param>
-    /// <returns></returns>
+    /// <returns>Lista com as claims que vao compor o RefreshToken</returns>
     public static IEnumerable<Claim> GetClaimsRefresh(this Usuario user)
     {
         var result = new List<Claim>
