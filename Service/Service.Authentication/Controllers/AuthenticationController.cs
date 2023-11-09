@@ -1,3 +1,6 @@
+using Infra.CrossCutting.Util.Configuration.Core.Controllers;
+using Infra.CrossCutting.Util.Notifications.Model;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -5,12 +8,13 @@ namespace Service.Authentication.Controllers;
 
 [ApiController]
 [Route("api/Authentication/")]
-public class AuthenticationController : ControllerBase
+public class AuthenticationController : CoreController
 {
 
     private readonly ILogger<AuthenticationController> _logger;
 
-    public AuthenticationController(ILogger<AuthenticationController> logger)
+    public AuthenticationController(INotificationHandler<Notifications> notification, 
+        ILogger<AuthenticationController> logger) : base(notification)
     {
         _logger = logger;
     }
