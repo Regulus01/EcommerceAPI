@@ -1,6 +1,6 @@
-using Application.Authorization.ViewModels;
+using Application.ViewModels;
 
-namespace Application.Authorization.Interface;
+namespace Application.Interface;
 
 public interface IAuthorizationAppService
 {

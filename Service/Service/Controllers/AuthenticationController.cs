@@ -4,7 +4,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Service.Authentication.Controllers;
+namespace Service.Controllers;
 
 [ApiController]
 [Route("api/Authentication/")]
