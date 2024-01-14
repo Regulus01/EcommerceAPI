@@ -4,5 +4,5 @@ namespace Application.Interface;
 
 public interface IAuthorizationAppService
 {
-    void ObterToken(LoginViewModel? message);
+    string ObterToken(LoginViewModel? message);
 }

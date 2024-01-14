@@ -12,21 +12,21 @@ public abstract class CoreController : ControllerBase
 
     protected CoreController(INotificationHandler<Notifications.Model.Notifications> notification)
     {
-        _notifications = (NotifyHandler)notification;
+        _notifications = (NotifyHandler) notification;
     }
 
-    protected IActionResult CreatedHasNotification(string route, object result = null)
+    protected IActionResult ApiResponse(object? result = null)
     {
         if (!HasNotifications())
         {
             if (result != null)
-                return Created(route, new
+                return Ok(new
                 {
                     success = true,
                     data = result
                 });
 
-            return Created(route, new
+            return Ok(new
             {
                 success = true
             });
@@ -35,20 +35,14 @@ public abstract class CoreController : ControllerBase
         return NoticationsEntity();
     }
 
-    protected bool HasNotifications()
+    private bool HasNotifications()
     {
         return _notifications.HasNotifications();
     }
 
-    protected IActionResult NoticationsEntity()
+    private IActionResult NoticationsEntity()
     {
-        var notifications =
-            _notifications.GetNotifications();
-
-        if (notifications.Any())
-        {
-            return BadRequest(new ApiResponse(HttpStatusCode.BadRequest.ToString(), notifications.ToList()));
-        }
+        var notifications = _notifications.GetNotifications();
 
         return BadRequest(new ApiResponse(HttpStatusCode.BadRequest.ToString(), notifications.ToList()));
     }

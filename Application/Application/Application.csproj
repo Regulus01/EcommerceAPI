@@ -7,4 +7,12 @@
         <OutputType>Library</OutputType>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\Infra\CrossCutting\Util\Notifications\Infra.CrossCutting.Util.Notifications\Infra.CrossCutting.Util.Notifications.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Authorization\" />
+    </ItemGroup>
+
 </Project>

@@ -10,11 +10,9 @@ public class Usuario
     public string Password { get; private set; }
     public Guid RoleId { get; private set; }
     public virtual Role Role { get; private set; }
-
-
-    public Usuario(Guid id, string name, string email, string password)
+    
+    public Usuario(string name, string email, string password)
     {
-        Id = id;
         Name = name;
         Email = email;
         Password = password;
