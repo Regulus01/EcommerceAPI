@@ -1,10 +1,9 @@
-using System.Reflection;
 using Infra.CrossCutting.Util.Configuration.Core.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 //Servicos
-DependencyInjection.Register(builder.Services);
+CompoundServices.Register(builder.Services);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

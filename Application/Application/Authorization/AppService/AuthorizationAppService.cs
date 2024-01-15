@@ -3,7 +3,7 @@ using Application.ViewModels;
 using Infra.CrossCutting.Util.Notifications.Implementation;
 using Infra.CrossCutting.Util.Notifications.Interface;
 
-namespace Application.AppService;
+namespace Application.Authorization.AppService;
 
 public class AuthorizationAppService : IAuthorizationAppService
 {
@@ -16,10 +16,10 @@ public class AuthorizationAppService : IAuthorizationAppService
     
     public string ObterToken(LoginViewModel? message)
     {
-        if (string.IsNullOrEmpty(message.Email))
+        if (string.IsNullOrEmpty(message?.Email) || string.IsNullOrEmpty(message.Password))
         {
-            _notify.NewNotification("Erro", "É necessário preencher o email");
-            return "teste";
+            _notify.NewNotification("Erro", "É necessário informar o email e senha");
+            return null;
         }
 
         return "sc";

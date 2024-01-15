@@ -1,4 +1,3 @@
-using Application.AppService;
 using Application.Interface;
 using Application.ViewModels;
 using Infra.CrossCutting.Util.Configuration.Core.Controllers;
@@ -7,7 +6,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Service.Controllers;
+namespace Service.Authorization.Controllers;
 
 [ApiController]
 [Route("api/Authentication/")]

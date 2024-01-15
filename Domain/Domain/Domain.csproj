@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Authorization\" />
+      <Folder Include="Authentication\" />
       <Folder Include="Commands\" />
       <Folder Include="Handle\" />
     </ItemGroup>

@@ -5,15 +5,14 @@ namespace Domain.Authentication.Entities;
 public class Usuario
 {
     public Guid Id { get; private set; }
-    public string Name { get; private set; }
+    public string Nome { get; private set; }
     public string Email { get; private set; }
     public string Password { get; private set; }
-    public Guid RoleId { get; private set; }
-    public virtual Role Role { get; private set; }
+    public virtual IEnumerable<UsuarioRole> UsuarioRoles { get; private set; }
     
-    public Usuario(string name, string email, string password)
+    public Usuario(string nome, string email, string password)
     {
-        Name = name;
+        Nome = nome;
         Email = email;
         Password = password;
     }

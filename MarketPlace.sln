@@ -31,6 +31,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configurat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra.CrossCutting.Util.Configuration.Core", "Infra\CrossCutting\Util\Configuration\Infra.CrossCutting.Util.Configuration.Core\Infra.CrossCutting.Util.Configuration.Core.csproj", "{88BDDC9A-7492-4E77-BE99-AE9FF6C0265C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra.Data", "Infra\Data\Infra.Data\Infra.Data.csproj", "{F5098AB1-5620-48BF-8003-A84703492C78}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,6 +62,10 @@ Global
 		{88BDDC9A-7492-4E77-BE99-AE9FF6C0265C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88BDDC9A-7492-4E77-BE99-AE9FF6C0265C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88BDDC9A-7492-4E77-BE99-AE9FF6C0265C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5098AB1-5620-48BF-8003-A84703492C78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5098AB1-5620-48BF-8003-A84703492C78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5098AB1-5620-48BF-8003-A84703492C78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5098AB1-5620-48BF-8003-A84703492C78}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9D5024AF-D133-4866-A922-7EAEA4223A8E} = {7CB1ADF7-F05C-43DE-B790-09D6CCC8E297}
@@ -72,5 +78,6 @@ Global
 		{12B1E63F-CE80-4132-98FB-F74922547976} = {C461523C-6EE5-4732-9308-C89DA3963DB2}
 		{ACC41FC6-23C9-4CB9-9046-D324DB805008} = {32624874-6DCF-48EF-9977-D800BBD18EE3}
 		{88BDDC9A-7492-4E77-BE99-AE9FF6C0265C} = {ACC41FC6-23C9-4CB9-9046-D324DB805008}
+		{F5098AB1-5620-48BF-8003-A84703492C78} = {75B4DDCE-D4F4-417C-9CE9-3EB10F4F0C63}
 	EndGlobalSection
 EndGlobal

@@ -20,7 +20,7 @@ public static class RoleClaimExtension
         var result = new List<Claim>
         {
             new (ClaimTypes.System, user.Id.ToString()),
-            new (ClaimTypes.Name, user.Name),
+            new (ClaimTypes.Name, user.Nome),
             new (ClaimTypes.Email, user.Email),
         };
         

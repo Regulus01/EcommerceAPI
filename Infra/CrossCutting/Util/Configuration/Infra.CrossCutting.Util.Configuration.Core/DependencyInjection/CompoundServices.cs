@@ -1,6 +1,6 @@
 ﻿using System.Data.Common;
 using System.Reflection;
-using Application.AppService;
+using Application.Authorization.AppService;
 using Application.Interface;
 using Domain.Authentication.Configuration;
 using Infra.CrossCutting.Util.Notifications.Handler;
@@ -13,7 +13,7 @@ using Npgsql;
 
 namespace Infra.CrossCutting.Util.Configuration.Core.DependencyInjection;
 
-public class DependencyInjection
+public class CompoundServices
 {
     public static void Register(IServiceCollection serviceProvider)
     {
