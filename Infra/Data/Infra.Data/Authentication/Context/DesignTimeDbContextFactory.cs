@@ -14,7 +14,7 @@ public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<Authentica
         var configuration = new ConfigurationBuilder().AddJsonFile(fileName).Build();
         var connectionString = configuration.GetConnectionString("App");
         
-        Console.ForegroundColor = ConsoleColor.Red;
+        Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine("Utilizando conexão -> " + connectionString);
         Console.ForegroundColor = ConsoleColor.White;
 

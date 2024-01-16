@@ -8,11 +8,12 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\Domain\Domain\Domain.csproj" />
       <ProjectReference Include="..\..\Infra\CrossCutting\Util\Notifications\Infra.CrossCutting.Util.Notifications\Infra.CrossCutting.Util.Notifications.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Authorization\" />
+      <PackageReference Include="AutoMapper" Version="12.0.1" />
     </ItemGroup>
 
 </Project>

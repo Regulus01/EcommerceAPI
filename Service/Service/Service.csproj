@@ -20,6 +20,11 @@
       <Folder Include="Authorization\" />
     </ItemGroup>
 
+    <PropertyGroup>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <NoWarn>$(NoWarn);1591</NoWarn>
+    </PropertyGroup>
+    
     <Target Name="PostBuild" AfterTargets="PostBuildEvent">
         <ItemGroup>
             <SourceConfig Include="../../Config/*.json" />

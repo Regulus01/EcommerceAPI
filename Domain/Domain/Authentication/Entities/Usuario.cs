@@ -1,6 +1,4 @@
-﻿using Domain.Authentication.Entities.Roles;
-
-namespace Domain.Authentication.Entities;
+﻿namespace Domain.Authentication.Entities;
 
 public class Usuario
 {
@@ -8,12 +6,22 @@ public class Usuario
     public string Nome { get; private set; }
     public string Email { get; private set; }
     public string Password { get; private set; }
-    public virtual IEnumerable<UsuarioRole> UsuarioRoles { get; private set; }
-    
+    public virtual ICollection<UsuarioRole> UsuarioRoles { get; private set; }
+
     public Usuario(string nome, string email, string password)
     {
         Nome = nome;
         Email = email;
         Password = password;
+    }
+
+    public void InformeUsuarioId(Guid id)
+    {
+        Id = id;
+    }
+
+    public void InformeUsuarioRole(UsuarioRole usuarioRole)
+    {
+        UsuarioRoles = new List<UsuarioRole> { usuarioRole };
     }
 }

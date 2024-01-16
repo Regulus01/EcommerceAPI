@@ -2,7 +2,7 @@
 
 public static class RoleRegister
 {
-    public static Role Admin = new Role(Guid.Parse("50F5BCBE-CD0D-4DCE-9808-49064A35E20A"), "Admin");
-    public static Role Vendedor = new Role(Guid.Parse("BD49AF6B-B585-4384-9C5D-56B347BB02FB"), "Vendedor");
-    public static Role Comprador = new Role(Guid.Parse("A83097FE-87B9-4A38-8067-1F13AB201137"), "Comprador");
+    public static Role Admin = new Role(Guid.Parse("24b8a637-0342-4e44-a7d2-659e78ee7303"), "MP_ADMIN");
+    public static Role Vendedor = new Role(Guid.Parse("4cf226b0-d84d-4394-82fc-80eab1b7aa5e"), "MP_VENDEDOR");
+    public static Role Comprador = new Role(Guid.Parse("6818f3b8-b19f-42cd-a236-61cb31305217"), "MP_COMPRADOR");
 }

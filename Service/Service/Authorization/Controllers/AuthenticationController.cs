@@ -20,12 +20,35 @@ public class AuthenticationController : CoreController
         _appService = appService;
     }
 
-    [HttpPost(Name = "Login")]
+    [HttpPost]
+    [Route("Login")]
     [AllowAnonymous]
     public IActionResult ObterTokenDeAutenticacao(LoginViewModel? login)
     {
         var response = _appService.ObterToken(login);
         
         return ApiResponse(response);
+    }
+    
+    /// <summary>
+    /// EndPoint utilizado para cadastrar usuário no sistema
+    /// </summary>
+    /// <remarks>
+    /// EndPoint utilizado para cadastrar usuário no sistema, o usuário cadastrado por padrão terá a role de admin
+    /// </remarks>
+    /// <param name="viewModel">Dados necessários para o cadastro no sistema</param>
+    /// <returns>
+    ///  Indicativo se a operação foi bem sucedida
+    /// </returns>
+    /// <response code="200">Retorna quando o usuário é cadastrado com sucesso</response>
+    /// <response code="400">Retorna quando há um erro na requisição ou nos dados fornecidos</response>
+    [HttpPost]
+    [Route("Cadastrar")]
+    [AllowAnonymous]
+    public IActionResult CadastrarUsuario(CadastroViewModel viewModel)
+    {
+        _appService.CadastrarUsuario(viewModel);
+        
+        return ApiResponse();
     }
 }

@@ -8,13 +8,19 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Authentication\" />
       <Folder Include="Commands\" />
       <Folder Include="Handle\" />
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="12.0.1" />
+      <PackageReference Include="MediatR" Version="12.1.1" />
+      <PackageReference Include="MediatR.Contracts" Version="2.0.1" />
       <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.32.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Infra\CrossCutting\Util\Notifications\Infra.CrossCutting.Util.Notifications\Infra.CrossCutting.Util.Notifications.csproj" />
     </ItemGroup>
 
 </Project>
