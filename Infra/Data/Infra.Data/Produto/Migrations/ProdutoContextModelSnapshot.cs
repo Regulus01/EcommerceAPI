@@ -26,15 +26,17 @@ namespace Infra.Data.Produto.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("Cat_Id");
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("Cat_Nome");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categoria");
+                    b.ToTable("Categoria", "Inventario");
                 });
 
             modelBuilder.Entity("Domain.Authentication.Produto.Entities.Produto", b =>

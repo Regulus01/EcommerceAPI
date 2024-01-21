@@ -21,14 +21,15 @@ namespace Infra.Data.Produto.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Categoria",
+                schema: "Inventario",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Nome = table.Column<string>(type: "text", nullable: false)
+                    Cat_Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Cat_Nome = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Categoria", x => x.Id);
+                    table.PrimaryKey("PK_Categoria", x => x.Cat_Id);
                 });
 
             migrationBuilder.AddForeignKey(
@@ -36,8 +37,9 @@ namespace Infra.Data.Produto.Migrations
                 schema: "Inventario",
                 table: "Produto",
                 column: "Pro_Id",
+                principalSchema: "Inventario",
                 principalTable: "Categoria",
-                principalColumn: "Id",
+                principalColumn: "Cat_Id",
                 onDelete: ReferentialAction.Cascade);
         }
 
@@ -50,7 +52,8 @@ namespace Infra.Data.Produto.Migrations
                 table: "Produto");
 
             migrationBuilder.DropTable(
-                name: "Categoria");
+                name: "Categoria",
+                schema: "Inventario");
 
             migrationBuilder.DropColumn(
                 name: "Cat_CategoriaId",

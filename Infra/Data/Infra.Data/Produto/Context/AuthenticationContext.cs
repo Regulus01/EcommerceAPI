@@ -22,5 +22,6 @@ public class ProdutoContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfiguration(new ProdutoMap());
+        modelBuilder.ApplyConfiguration(new CategoriaMap());
     }
 }

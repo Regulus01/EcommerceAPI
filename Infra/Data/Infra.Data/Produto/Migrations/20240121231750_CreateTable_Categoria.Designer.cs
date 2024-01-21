@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infra.Data.Produto.Migrations
 {
     [DbContext(typeof(ProdutoContext))]
-    [Migration("20240121231441_CreateTable_Categoria")]
+    [Migration("20240121231750_CreateTable_Categoria")]
     partial class CreateTable_Categoria
     {
         /// <inheritdoc />
@@ -29,15 +29,17 @@ namespace Infra.Data.Produto.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("Cat_Id");
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("Cat_Nome");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categoria");
+                    b.ToTable("Categoria", "Inventario");
                 });
 
             modelBuilder.Entity("Domain.Authentication.Produto.Entities.Produto", b =>
