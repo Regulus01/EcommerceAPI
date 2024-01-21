@@ -8,7 +8,7 @@ public class ApiResponse
     {
     }
 
-    public ApiResponse(string verbDescription, List<Notifications.Model.Notifications> exception, string target = null)
+    public ApiResponse(string verbDescription, List<Notifications.Model.Notifications> exception, string? target = null)
     {
         var response = GetCompleteException(verbDescription, exception, target);
         Error = response.Error;

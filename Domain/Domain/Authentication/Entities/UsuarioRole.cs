@@ -10,10 +10,7 @@ public class UsuarioRole
     public Guid RoleId { get; private set; }
     public virtual Role Role { get; private set; }
 
-    public UsuarioRole()
-    {
-        
-    }
+    public UsuarioRole() { }
     public UsuarioRole(Guid usuarioId, Guid roleId)
     {
         UsuarioId = usuarioId;

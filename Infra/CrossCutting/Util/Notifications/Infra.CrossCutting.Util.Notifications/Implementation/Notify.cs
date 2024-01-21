@@ -19,7 +19,7 @@ public class Notify : INotify
         return this;
     }
 
-    public bool IsValid()
+    public bool HasNotifications()
     {
         return !_messageHandler.HasNotifications();
     }

@@ -4,7 +4,7 @@ namespace Application.Interface;
 
 public interface IAuthorizationAppService
 {
-    string ObterToken(LoginViewModel? message);
+    TokenViewModel Login(LoginViewModel? message);
     /// <summary>
     /// Método utilizado para cadastrar um usuário no sistema
     /// </summary>

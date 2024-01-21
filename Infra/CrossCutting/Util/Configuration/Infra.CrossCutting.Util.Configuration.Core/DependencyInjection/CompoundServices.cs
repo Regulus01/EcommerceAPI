@@ -3,7 +3,6 @@ using Application.Authorization.AppService;
 using Application.AutoMapper;
 using Application.Interface;
 using Domain.Authentication.Commands;
-using Domain.Authentication.Configuration;
 using Domain.Authentication.Interface;
 using Infra.CrossCutting.Util.Notifications.Handler;
 using Infra.CrossCutting.Util.Notifications.Implementation;
@@ -24,27 +23,26 @@ public class CompoundServices
     {
         RepositoryDependence(serviceProvider);
     }
-     private static void RepositoryDependence(IServiceCollection serviceProvider)
+
+    private static void RepositoryDependence(IServiceCollection serviceProvider)
     {
+        BaseCompound.BaseCompoundDependence(serviceProvider);
+
         //DBConnection
         var configuration = new ConfigurationBuilder()
             .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
             .AddJsonFile("Config/appsettings.json") // Obtem o appsettings da pasta de configuracao
-            .Build(); 
+            .Build();
 
         DbConnection dbConnection = new NpgsqlConnection(configuration.GetConnectionString("app"));
+
         //Para adicionar mais contextos é necessário repetir o addDbContext
-    
         serviceProvider.AddDbContext<AuthenticationContext>(opt =>
         {
             opt.UseNpgsql(dbConnection, assembly =>
                 assembly.MigrationsAssembly(typeof(AuthenticationContext).Assembly.FullName));
         });
-    
 
-        //Token service
-        serviceProvider.AddTransient<TokenService>();
-        
         //Auto mapper
         var mapper = AutoMapperConfig.RegisterMaps().CreateMapper();
         serviceProvider.AddSingleton(mapper);
@@ -55,15 +53,15 @@ public class CompoundServices
         serviceProvider.AddScoped<INotificationHandler<Notifications.Model.Notifications>, NotifyHandler>();
         serviceProvider.AddScoped<INotify, Notify>();
         serviceProvider.AddScoped<IUsuarioRepository, UsuarioRepository>();
-        
+
         //Authorization
         serviceProvider.AddScoped<IAuthorizationAppService, AuthorizationAppService>();
-        
+
         //Mediatr
         serviceProvider.AddMediatR(config =>
         {
             config.RegisterServicesFromAssemblies(typeof(CadastrarUsuarioCommand).Assembly);
+            config.RegisterServicesFromAssemblies(typeof(LoginCommand).Assembly);
         });
-        
     }
 }

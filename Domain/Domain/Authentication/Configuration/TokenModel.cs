@@ -6,6 +6,7 @@ public class TokenModel
     public DateTime? AccessTokenExpiration { get; }
     public string? RefreshToken { get; }
 
+    public TokenModel() { }
     public TokenModel(string? accessToken, DateTime? acessTokenExpiration, string? refreshToken)
     {
         AccessToken = accessToken;

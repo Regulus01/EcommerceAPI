@@ -1,6 +1,9 @@
-﻿using Domain.Authentication.Entities;
+﻿using System.Linq.Expressions;
+using Domain.Authentication.Entities;
 using Domain.Authentication.Interface;
 using Infra.Data.Authentication.Context;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using Microsoft.Extensions.Logging;
 
 namespace Infra.Data.Authentication.Repository;
@@ -15,12 +18,15 @@ public class UsuarioRepository : IUsuarioRepository
         _context = context;
         _logger = logger;
     }
-    
-    public bool EmailCadastrado(string email)
+
+    public Usuario? ObterUsuario(Expression<Func<Usuario, bool>> predicate, Func<IQueryable<Usuario>, IIncludableQueryable<Usuario, object>>? includes = null)
     {
-        var emailExiste = _context.Users.FirstOrDefault(x => x.Email == email);
-        
-        return emailExiste != null;
+        var query = _context.Users.AsQueryable();
+
+        if (includes != null)
+            query = includes(query);
+
+        return query.FirstOrDefault(predicate);
     }
     
     public void AdicionarUsuario(Usuario usuario)

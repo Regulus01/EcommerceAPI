@@ -1,5 +1,6 @@
 ﻿using System.Security.Claims;
 using Domain.Authentication.Entities;
+using Newtonsoft.Json;
 
 namespace Domain.Authentication.Extension;
 
@@ -17,14 +18,21 @@ public static class RoleClaimExtension
     /// <returns>Lista com as claims que vão compor o token</returns>
     public static IEnumerable<Claim> GetClaimsAccess(this Usuario user)
     {
-        var result = new List<Claim>
-        {
-            new (ClaimTypes.System, user.Id.ToString()),
-            new (ClaimTypes.Name, user.Nome),
-            new (ClaimTypes.Email, user.Email),
-        };
+        var userRoles = user.UsuarioRoles.Select(role => role.Role.Nome).ToList();
         
-        return result;
+        if (userRoles.Count == 0)
+            return new List<Claim>();
+       
+        var claims = new List<Claim>
+        {
+            new (ClaimTypes.NameIdentifier, user.Id.ToString()),
+            new (ClaimTypes.Name, user.Nome),
+            new (ClaimTypes.Email, user.Email)
+        };
+
+        claims.AddRange(userRoles.Select(role => new Claim(ClaimTypes.Role, role)));
+        
+        return claims;
     }
     
     /// <summary>
@@ -40,7 +48,7 @@ public static class RoleClaimExtension
     {
         var result = new List<Claim>
         {
-            new (ClaimTypes.System, user.Id.ToString()),
+            new (ClaimTypes.NameIdentifier, user.Id.ToString()),
         };
         
         return result;

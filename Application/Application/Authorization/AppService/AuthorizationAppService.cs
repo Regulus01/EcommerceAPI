@@ -3,6 +3,7 @@ using Application.Interface;
 using Application.ViewModels;
 using AutoMapper;
 using Domain.Authentication.Commands;
+using Domain.Authentication.Configuration;
 using Domain.Authentication.Interface;
 using Infra.CrossCutting.Util.Notifications.Implementation;
 using Infra.CrossCutting.Util.Notifications.Interface;
@@ -25,15 +26,25 @@ public class AuthorizationAppService : IAuthorizationAppService
         _notify = notify.Invoke();
     }
     
-    public string ObterToken(LoginViewModel? message)
+    public TokenViewModel Login(LoginViewModel? message)
     {
         if (string.IsNullOrEmpty(message?.Email) || string.IsNullOrEmpty(message.Password))
         {
             _notify.NewNotification("Erro", "É necessário informar o email e senha");
-            return null;
+            return new TokenViewModel();
         }
+        
+        if (!ValidarEmail(message.Email))
+        {
+            _notify.NewNotification("Erro", "Email invalido");
+            return new TokenViewModel();
+        }
+        
+        var loginCommand = _mapper.Map<LoginCommand>(message);
 
-        return "sc";
+        var token = _mediator.Send(loginCommand).Result;
+
+        return _mapper.Map<TokenViewModel>(token);
     }
 
     /// <summary>
@@ -58,7 +69,9 @@ public class AuthorizationAppService : IAuthorizationAppService
             return;
         }
 
-        if (_usuarioRepository.EmailCadastrado(viewModel.Email))
+        var usuario = _usuarioRepository.ObterUsuario(x => x.Email.Equals(viewModel.Email));
+        
+        if (usuario != null)
         {
             _notify.NewNotification("Erro", "Email já se encontra cadastrado");
             return;

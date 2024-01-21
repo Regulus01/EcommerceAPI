@@ -9,13 +9,17 @@ namespace Domain.Authentication.Configuration;
 
 public class TokenService
 {
-    public TokenModel? GenerateToken (Usuario user)
+    public static TokenModel? GenerateToken(Usuario user)
     {
         //Estancia do manipulador de Token
         var tokenHandler = new JwtSecurityTokenHandler();
 
         // Método de extensão para gerar as claims do usuário
         var userClaimsAccess = user.GetClaimsAccess().ToList();
+
+        if (userClaimsAccess.Count == 0)
+            return null;
+        
         var userClaimsRefresh = user.GetClaimsRefresh().ToList();
         
         //Gerando o token, a partir das claims do usuário
@@ -38,7 +42,7 @@ public class TokenService
     /// <param name="tempo">Tempo de expiração do token</param>
     /// <param name="userClaims">Claims que irão compor o token</param>
     /// <returns>Token de autenticacao</returns>
-    private SecurityTokenDescriptor GerarToken(int tempo, IEnumerable<Claim> userClaims)
+    private static SecurityTokenDescriptor GerarToken(int tempo, IEnumerable<Claim> userClaims)
     {
         //Chave da classe Configuration. O Token Handler espera um Array de Bytes, por isso é necessário converter
         var key = Encoding.ASCII.GetBytes(Configuration.JwtKey);

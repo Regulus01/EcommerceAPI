@@ -18,7 +18,7 @@ public class NotifyHandler : INotificationHandler<NotificationsModel>
         return Task.CompletedTask;
     }
 
-    public virtual List<NotificationsModel> GetNotifications()
+    public virtual IEnumerable<NotificationsModel> GetNotifications()
     {
         return _notifications.Where(not => not.GetType() == typeof(NotificationsModel))
                              .ToList();

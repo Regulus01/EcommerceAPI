@@ -20,6 +20,11 @@ public class Usuario
         Id = id;
     }
 
+    public void InformeSenha(string senha)
+    {
+        Password = senha;
+    }
+
     public void InformeUsuarioRole(UsuarioRole usuarioRole)
     {
         UsuarioRoles = new List<UsuarioRole> { usuarioRole };

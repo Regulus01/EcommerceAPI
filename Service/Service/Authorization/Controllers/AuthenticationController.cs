@@ -1,5 +1,7 @@
 using Application.Interface;
 using Application.ViewModels;
+using Domain.Authentication.Entities.Roles;
+using HttpAcessor;
 using Infra.CrossCutting.Util.Configuration.Core.Controllers;
 using Infra.CrossCutting.Util.Notifications.Model;
 using MediatR;
@@ -13,11 +15,13 @@ namespace Service.Authorization.Controllers;
 public class AuthenticationController : CoreController
 {
     private IAuthorizationAppService _appService;
+    private readonly IAuthenticatedUser _user;
 
     public AuthenticationController(INotificationHandler<Notifications> notification,
-                                    IAuthorizationAppService appService) : base(notification)
+                                    IAuthorizationAppService appService, IAuthenticatedUser user) : base(notification)
     {
         _appService = appService;
+        _user = user;
     }
 
     [HttpPost]
@@ -25,7 +29,7 @@ public class AuthenticationController : CoreController
     [AllowAnonymous]
     public IActionResult ObterTokenDeAutenticacao(LoginViewModel? login)
     {
-        var response = _appService.ObterToken(login);
+        var response = _appService.Login(login);
         
         return ApiResponse(response);
     }
@@ -50,5 +54,27 @@ public class AuthenticationController : CoreController
         _appService.CadastrarUsuario(viewModel);
         
         return ApiResponse();
+    }
+
+    //toDo: TESTE APAGAR DEPOIS
+    [HttpGet]
+    [Route("Autenticado")]
+    [Authorize]
+    public string? Autenticado()
+    {
+        var user = _user.GetUserId();
+        
+        return user.ToString() ;
+    }
+    
+    //toDo: TESTE APAGAR DEPOIS
+    [HttpGet]
+    [Route("AutenticadoComRole")]
+    [Authorize(Roles = RoleRegister.Admin.Nome)]
+    public string? AutenticadoComRole()
+    {
+        var user = _user.GetUserId();
+        
+        return user + ", Admin" ;
     }
 }

@@ -1,4 +1,4 @@
-﻿using Application.AutoMapper.ViewModelToCommand;
+﻿using Application.AutoMapper.MapProfiles;
 using AutoMapper;
 
 namespace Application.AutoMapper;
