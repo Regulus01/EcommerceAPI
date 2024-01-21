@@ -1,6 +1,5 @@
 ﻿using System.Security.Claims;
 using Domain.Authentication.Entities;
-using Newtonsoft.Json;
 
 namespace Domain.Authentication.Extension;
 

@@ -24,6 +24,14 @@ public class AuthenticationController : CoreController
         _user = user;
     }
 
+    /// <summary>
+    ///     EndPoint utilizado para fazer login no sistema
+    /// </summary>
+    /// <remarks>
+    ///     EndPoint utilizado para realizar o login no sistema a partir do login e senha.
+    /// </remarks>
+    /// <param name="login">Dados necessários para o login</param>
+    /// <returns>Token de autenticação</returns>
     [HttpPost]
     [Route("Login")]
     [AllowAnonymous]
