@@ -1,13 +1,13 @@
-﻿using Infra.Data.Authentication.Context;
+﻿using Infra.Data.Inventario.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
 namespace Infra.Data.Produto.Context;
 
-public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<ProdutoContext>
+public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<InventarioContext>
 {
-    public ProdutoContext CreateDbContext(string[] args)
+    public InventarioContext CreateDbContext(string[] args)
     {
         var fileName = Path.Combine(Directory.GetCurrentDirectory(), "Config", "appsettings.json");
 
@@ -18,9 +18,9 @@ public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<ProdutoCon
         Console.WriteLine("Utilizando conexão -> " + connectionString);
         Console.ForegroundColor = ConsoleColor.White;
 
-        var optionsBuilder = new DbContextOptionsBuilder<ProdutoContext>();
+        var optionsBuilder = new DbContextOptionsBuilder<InventarioContext>();
         optionsBuilder.UseNpgsql(connectionString);
 
-        return new ProdutoContext(optionsBuilder.Options);
+        return new InventarioContext(optionsBuilder.Options);
     }
 }

@@ -10,6 +10,7 @@ public class AutoMapperConfig
         return new MapperConfiguration(config =>
         {
             config.AddProfile<AuthenticationMapProfile>();
+            config.AddProfile<InventarioMapProfile>();
         });
     }
 }

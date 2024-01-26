@@ -1,7 +1,6 @@
+using Application.Authorization.ViewModels;
 using Application.Interface;
 using Application.ViewModels;
-using Domain.Authentication.Entities.Roles;
-using HttpAcessor;
 using Infra.CrossCutting.Util.Configuration.Core.Controllers;
 using Infra.CrossCutting.Util.Notifications.Model;
 using MediatR;
@@ -15,13 +14,11 @@ namespace Service.Authorization.Controllers;
 public class AuthenticationController : CoreController
 {
     private IAuthorizationAppService _appService;
-    private readonly IAuthenticatedUser _user;
 
     public AuthenticationController(INotificationHandler<Notifications> notification,
-                                    IAuthorizationAppService appService, IAuthenticatedUser user) : base(notification)
+                                    IAuthorizationAppService appService) : base(notification)
     {
         _appService = appService;
-        _user = user;
     }
 
     /// <summary>
@@ -63,26 +60,22 @@ public class AuthenticationController : CoreController
         
         return ApiResponse();
     }
-
-    //toDo: TESTE APAGAR DEPOIS
-    [HttpGet]
-    [Route("Autenticado")]
-    [Authorize]
-    public string? Autenticado()
-    {
-        var user = _user.GetUserId();
-        
-        return user.ToString() ;
-    }
     
-    //toDo: TESTE APAGAR DEPOIS
-    [HttpGet]
-    [Route("AutenticadoComRole")]
-    [Authorize(Roles = RoleRegister.Admin.Nome)]
-    public string? AutenticadoComRole()
+    /// <summary>
+    ///     EndPoint Authorize utilizado para cadastrar produtos
+    /// </summary>
+    /// <remarks>
+    ///     EndPoint utilizado para cadastrar produtos.
+    /// </remarks>
+    /// <param name="viewModel">Dados necessários para cadastrar produtos</param>
+    /// <returns>objeto com informações sobre a inclusão</returns>
+    [HttpPost]
+    [Route("Produto")]
+    [AllowAnonymous]
+    public IActionResult CadastrarProdutos([FromBody] LoginViewModel viewModel)
     {
-        var user = _user.GetUserId();
+    
         
-        return user + ", Admin" ;
+        return ApiResponse();
     }
 }

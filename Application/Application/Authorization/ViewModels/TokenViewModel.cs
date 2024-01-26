@@ -1,4 +1,4 @@
-﻿namespace Application.ViewModels;
+﻿namespace Application.Authorization.ViewModels;
 
 public class TokenViewModel
 {

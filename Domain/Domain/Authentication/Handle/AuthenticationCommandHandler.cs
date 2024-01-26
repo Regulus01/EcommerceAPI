@@ -15,15 +15,13 @@ namespace Domain.Authentication.Handle;
 public class AuthenticationCommandHandler : IRequestHandler<CadastrarUsuarioCommand>, 
                                             IRequestHandler<LoginCommand, TokenModel>
 {
-    private readonly IMediator _mediator;
     private readonly IUsuarioRepository _usuarioRepository;
     private readonly IMapper _mapper;
     private readonly Notify _notify;
 
-    public AuthenticationCommandHandler(IMediator mediator, IMapper mapper, IUsuarioRepository usuarioRepository,
+    public AuthenticationCommandHandler(IMapper mapper, IUsuarioRepository usuarioRepository,
                                         INotify notify)
     {
-        _mediator = mediator;
         _mapper = mapper;
         _usuarioRepository = usuarioRepository;
         _notify = notify.Invoke();
@@ -36,7 +34,7 @@ public class AuthenticationCommandHandler : IRequestHandler<CadastrarUsuarioComm
         usuario.InformeUsuarioId(Guid.NewGuid());
         usuario.InformeSenha(HashSenha(usuario, request.Password));
         
-        _usuarioRepository.AdicionarUsuario(usuario);
+        _usuarioRepository.Add(usuario);
         
         AtribuirRoleAoUsuario(usuario.Id);
         
@@ -89,7 +87,7 @@ public class AuthenticationCommandHandler : IRequestHandler<CadastrarUsuarioComm
     private void AtribuirRoleAoUsuario(Guid usuarioId)
     {
         var usuarioRole = new UsuarioRole(usuarioId, Guid.Parse(RoleRegister.Comprador.Id));;
-        _usuarioRepository.AdicionarRole(usuarioRole);
+        _usuarioRepository.Add(usuarioRole);
     }
 
 

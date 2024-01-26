@@ -1,7 +1,6 @@
 using System.Reflection;
-using Infra.CrossCutting.Util.Configuration.Core.DependencyInjection;
+using Infra.Data.DependencyInjection;
 using Microsoft.OpenApi.Models;
-
 
 var builder = WebApplication.CreateBuilder(args);
 

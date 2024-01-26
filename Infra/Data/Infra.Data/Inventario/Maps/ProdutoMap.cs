@@ -1,9 +1,8 @@
-﻿using Domain.Authentication.Produto.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ProdutoDomain = Domain.Authentication.Produto.Entities.Produto;
+using ProdutoDomain = Domain.Authentication.Inventario.Entities.Produto;
 
-namespace Infra.Data.Produto.Maps;
+namespace Infra.Data.Inventario.Maps;
 
 public class ProdutoMap : IEntityTypeConfiguration<ProdutoDomain>
 {

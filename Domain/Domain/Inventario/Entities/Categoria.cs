@@ -1,4 +1,4 @@
-﻿namespace Domain.Authentication.Produto.Entities;
+﻿namespace Domain.Authentication.Inventario.Entities;
 
 public class Categoria
 {

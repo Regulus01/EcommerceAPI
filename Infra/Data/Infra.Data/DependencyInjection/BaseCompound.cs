@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using ConfigurationDomain = Domain.Authentication.Configuration;
 
-namespace Infra.CrossCutting.Util.Configuration.Core.DependencyInjection;
+namespace Infra.Data.DependencyInjection;
 
 public class BaseCompound
 {

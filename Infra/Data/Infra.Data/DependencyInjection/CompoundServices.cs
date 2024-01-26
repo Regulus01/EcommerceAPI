@@ -4,18 +4,21 @@ using Application.AutoMapper;
 using Application.Interface;
 using Domain.Authentication.Commands;
 using Domain.Authentication.Interface;
+using Domain.Authentication.Inventario.Commands;
+using Domain.Authentication.Inventario.Interface;
 using Infra.CrossCutting.Util.Notifications.Handler;
 using Infra.CrossCutting.Util.Notifications.Implementation;
 using Infra.CrossCutting.Util.Notifications.Interface;
 using Infra.Data.Authentication.Context;
 using Infra.Data.Authentication.Repository;
+using Infra.Data.Produto.Repository;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Npgsql;
 
-namespace Infra.CrossCutting.Util.Configuration.Core.DependencyInjection;
+namespace Infra.Data.DependencyInjection;
 
 public class CompoundServices
 {
@@ -48,11 +51,16 @@ public class CompoundServices
         serviceProvider.AddSingleton(mapper);
         serviceProvider.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-        //Inversao de dependencia
+        //Inversao de dependencia - Ioc
         //Notification pattern
-        serviceProvider.AddScoped<INotificationHandler<Notifications.Model.Notifications>, NotifyHandler>();
+        serviceProvider.AddScoped<INotificationHandler<CrossCutting.Util.Notifications.Model.Notifications>, NotifyHandler>();
         serviceProvider.AddScoped<INotify, Notify>();
+        
+        //Authetication
         serviceProvider.AddScoped<IUsuarioRepository, UsuarioRepository>();
+        
+        //Inventario
+        serviceProvider.AddScoped<IProdutoRepository, ProdutoRepository>();
 
         //Authorization
         serviceProvider.AddScoped<IAuthorizationAppService, AuthorizationAppService>();
@@ -60,8 +68,12 @@ public class CompoundServices
         //Mediatr
         serviceProvider.AddMediatR(config =>
         {
+            //Authentication
             config.RegisterServicesFromAssemblies(typeof(CadastrarUsuarioCommand).Assembly);
             config.RegisterServicesFromAssemblies(typeof(LoginCommand).Assembly);
+            
+            //Inventario
+            config.RegisterServicesFromAssemblies(typeof(CadastrarProdutoCommand).Assembly);
         });
     }
 }

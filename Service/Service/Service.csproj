@@ -14,10 +14,12 @@
       <ProjectReference Include="..\..\Application\Application\Application.csproj" />
       <ProjectReference Include="..\..\Infra\CrossCutting\Util\Configuration\Infra.CrossCutting.Util.Configuration.Core\Infra.CrossCutting.Util.Configuration.Core.csproj" />
       <ProjectReference Include="..\..\Infra\CrossCutting\Util\Notifications\Infra.CrossCutting.Util.Notifications\Infra.CrossCutting.Util.Notifications.csproj" />
+      <ProjectReference Include="..\..\Infra\Data\Infra.Data\Infra.Data.csproj" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="Authorization\" />
+      <Folder Include="Inventario\" />
     </ItemGroup>
 
     <PropertyGroup>

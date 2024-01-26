@@ -1,4 +1,4 @@
-﻿using Application.ViewModels;
+﻿using Application.Authorization.ViewModels;
 using AutoMapper;
 using Domain.Authentication.Commands;
 using Domain.Authentication.Configuration;

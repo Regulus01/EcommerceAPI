@@ -1,4 +1,4 @@
-using Application.ViewModels;
+using Application.Authorization.ViewModels;
 
 namespace Application.Interface;
 

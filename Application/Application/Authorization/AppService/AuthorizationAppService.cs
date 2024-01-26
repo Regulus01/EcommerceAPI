@@ -1,9 +1,8 @@
 using System.Text.RegularExpressions;
 using Application.Interface;
-using Application.ViewModels;
+using Application.Authorization.ViewModels;
 using AutoMapper;
 using Domain.Authentication.Commands;
-using Domain.Authentication.Configuration;
 using Domain.Authentication.Interface;
 using Infra.CrossCutting.Util.Notifications.Implementation;
 using Infra.CrossCutting.Util.Notifications.Interface;

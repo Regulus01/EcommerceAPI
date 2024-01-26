@@ -1,8 +1,8 @@
-﻿using Domain.Authentication.Produto.Entities;
+﻿using Domain.Authentication.Inventario.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Infra.Data.Produto.Maps;
+namespace Infra.Data.Inventario.Maps;
 
 public class CategoriaMap : IEntityTypeConfiguration<Categoria>
 {
