@@ -1,7 +1,8 @@
 # Sobre o projeto
 
-Projeto de web API de uma marketplace utilizando tecnologias em nuvem. No projeto foi abordado utilizando modelado
-utilizando DDD, onde é divido em contextos.
+O projeto é uma Web API para um marketplace, incorporando tecnologias em nuvem para potencializar sua escalabilidade e eficiência. 
+Este projeto adota uma abordagem baseada no Domain-Driven Design (DDD), organizando-o em contextos específicos 
+para otimizar a gestão e manutenção do sistema.
 
 ## O que é necessário para executar?
 
