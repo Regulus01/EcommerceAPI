@@ -3,6 +3,24 @@
 Projeto de web API de uma marketplace utilizando tecnologias em nuvem. No projeto foi abordado utilizando modelado
 utilizando DDD, onde é divido em contextos.
 
+## O que é necessário para executar?
+
+Para iniciar o projeto localmente, é imprescindível seguir alguns passos essenciais. Primeiramente, crie um arquivo denominado "appsettings.json" e o coloque na pasta denominada "config".
+
+Nesse arquivo deverá incluir a string de conexão no seguinte formato. Certifique-se 
+de que o banco de dados utilizado seja o PostgreSQL:
+```
+{
+"ConnectionStrings": {
+"App": "Server=*****;* Database=****; User id=*****; Password=*****;"
+    }
+}
+```
+
+Após a criação do arquivo de configuração, build o projeto e  execute as migrações nas respectivas pastas de infraestrutura de dados, 
+abrangendo todos os contextos necessários.
+
+
 ## API Reference
 
 ## Authentication
@@ -18,7 +36,7 @@ utilizando DDD, onde é divido em contextos.
 | `Email`    | `string` | **Required**. Email do usuário para a autenticação |
 | `Password` | `string` | **Required**. Senha do usuário no sistema          |
 
-#### Cadastro no sistema
+### Cadastro no sistema
 
 ```http
   Post /api/Cadastrar
@@ -32,6 +50,7 @@ utilizando DDD, onde é divido em contextos.
 
 ## Produto
 
+### Cadastro de produtos
 ```http
   Post /api/Produto
 ```
@@ -41,6 +60,7 @@ utilizando DDD, onde é divido em contextos.
 | `Nome`    | `string` | **Required**. Nome do Produto  |
 | `Preco`   | `string` | **Required**. Preco do produto |
 
+### Produtos por id
 ```http
   GET /api/Produto/id
 ```
@@ -49,6 +69,7 @@ utilizando DDD, onde é divido em contextos.
 |:----------|:---------|:---------------------------------------|
 | `Id`      | `Guid`   | **Required**. Id do produto no sistema |
 
+### Listagem de produtos
 ```http
   GET /api/Produto?
 ```
