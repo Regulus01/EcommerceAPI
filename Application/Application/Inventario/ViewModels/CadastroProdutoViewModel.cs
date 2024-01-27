@@ -1,6 +1,6 @@
 ﻿namespace Application.Inventario.ViewModels;
 
-public class ProdutoViewModel
+public class CadastroProdutoViewModel
 {
     public string Nome { get; set; }
     public decimal Preco { get; set; }

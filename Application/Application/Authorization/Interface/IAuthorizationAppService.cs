@@ -1,10 +1,17 @@
 using Application.Authorization.ViewModels;
+using Application.ViewModels;
 
 namespace Application.Interface;
 
 public interface IAuthorizationAppService
 {
+    /// <summary>
+    /// Método utilizado para fazer login no sistema
+    /// </summary>
+    /// <param name="message"></param>
+    /// <returns>Token e refresh para autenticação</returns>
     TokenViewModel Login(LoginViewModel? message);
+    
     /// <summary>
     /// Método utilizado para cadastrar um usuário no sistema
     /// </summary>

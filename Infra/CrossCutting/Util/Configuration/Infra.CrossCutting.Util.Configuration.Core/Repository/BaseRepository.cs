@@ -7,13 +7,19 @@ public class BaseRepository<TContext, TL> where TContext : DbContext
 {
     protected ILogger<TL> _logger;
     protected TContext _context;
+
+    public BaseRepository(TContext context, ILogger<TL> logger)
+    {
+        _logger = logger;
+        _context = context;
+    }
     
     public bool Commit()
     {
         try
         {
             var result = _context.SaveChanges();
-            return result > 1;
+            return result >= 1;
         }
         catch (Exception e)
         {

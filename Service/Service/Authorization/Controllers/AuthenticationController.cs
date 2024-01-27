@@ -60,22 +60,4 @@ public class AuthenticationController : CoreController
         
         return ApiResponse();
     }
-    
-    /// <summary>
-    ///     EndPoint Authorize utilizado para cadastrar produtos
-    /// </summary>
-    /// <remarks>
-    ///     EndPoint utilizado para cadastrar produtos.
-    /// </remarks>
-    /// <param name="viewModel">Dados necessários para cadastrar produtos</param>
-    /// <returns>objeto com informações sobre a inclusão</returns>
-    [HttpPost]
-    [Route("Produto")]
-    [AllowAnonymous]
-    public IActionResult CadastrarProdutos([FromBody] LoginViewModel viewModel)
-    {
-    
-        
-        return ApiResponse();
-    }
 }

@@ -12,9 +12,9 @@ Projeto de web API de uma marketplace utilizando tecnologias em nuvem. No projet
   Post /api/Authentication
 ```
 
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `Email` | `string`   | **Required**. Email do usuário para a autenticação |
+| Parameter  | Type     | Description                |
+|:-----------| :------- | :------------------------- |
+| `Email`    | `string`   | **Required**. Email do usuário para a autenticação |
 | `Password` | `string`| **Required**. Senha do usuário no sistema |
 
 #### Cadastro no sistema
@@ -23,11 +23,11 @@ Projeto de web API de uma marketplace utilizando tecnologias em nuvem. No projet
   Post /api/Cadastrar
 ```
 
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `Nome`      | `string` | **Required**. Nome do usuário     |
-| `Email`      | `string` | **Required**. Email para cadastro no sistema    |
-| `Password`      | `string` | **Required**. Senha utilizada para autenticação no sistema    |
+| Parameter      | Type     | Description                       |
+|:---------------| :------- | :-------------------------------- |
+| `Nome`         | `string` | **Required**. Nome do usuário     |
+| `Email`        | `string` | **Required**. Email para cadastro no sistema    |
+| `Password`     | `string` | **Required**. Senha utilizada para autenticação no sistema    |
 
 
 ## Tecnologias

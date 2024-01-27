@@ -9,7 +9,6 @@ public class ProdutoMap : IEntityTypeConfiguration<ProdutoDomain>
     public void Configure(EntityTypeBuilder<ProdutoDomain> builder)
     {
         builder.HasKey(x => x.Id);
-        
         builder.Property(x => x.Id)
             .HasColumnName("Pro_Id")
             .ValueGeneratedOnAdd();
@@ -28,7 +27,7 @@ public class ProdutoMap : IEntityTypeConfiguration<ProdutoDomain>
 
         builder.HasOne(x => x.Categoria)
                .WithMany(x => x.Produtos)
-               .HasForeignKey(x => x.Id);
+               .HasForeignKey(x => x.CategoriaId);
         
         builder.ToTable("Produto", "Inventario");
     }

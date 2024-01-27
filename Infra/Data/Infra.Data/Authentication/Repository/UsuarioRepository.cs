@@ -10,10 +10,8 @@ namespace Infra.Data.Authentication.Repository;
 
 public class UsuarioRepository : BaseRepository<AuthenticationContext, UsuarioRepository>, IUsuarioRepository
 {
-    public UsuarioRepository(AuthenticationContext context, ILogger<UsuarioRepository> logger)
+    public UsuarioRepository(AuthenticationContext context, ILogger<UsuarioRepository> logger) : base(context, logger)
     {
-        _context = context;
-        _logger = logger;
     }
 
     public Usuario? ObterUsuario(Expression<Func<Usuario, bool>> predicate, Func<IQueryable<Usuario>, IIncludableQueryable<Usuario, object>>? includes = null)

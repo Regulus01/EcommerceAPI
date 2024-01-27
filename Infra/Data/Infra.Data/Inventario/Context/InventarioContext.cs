@@ -21,6 +21,5 @@ public class InventarioContext : DbContext
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfiguration(new ProdutoMap());
         modelBuilder.ApplyConfiguration(new CategoriaMap());
-        modelBuilder.ApplyConfiguration(new ProdutoMap());
     }
 }

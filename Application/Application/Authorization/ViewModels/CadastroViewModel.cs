@@ -1,4 +1,4 @@
-﻿namespace Application.Authorization.ViewModels;
+﻿namespace Application.ViewModels;
 
 public class CadastroViewModel
 {

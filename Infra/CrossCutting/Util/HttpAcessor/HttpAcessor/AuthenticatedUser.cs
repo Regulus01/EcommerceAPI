@@ -2,7 +2,7 @@
 
 namespace HttpAcessor;
 
-public class AuthenticatedUser: IAuthenticatedUser
+public class AuthenticatedUser : IAuthenticatedUser
 {
     private readonly IHttpContextAccessor _accessor;
 

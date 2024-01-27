@@ -10,9 +10,12 @@ public class InventarioMapProfile : Profile
     public InventarioMapProfile()
     {
         //ViewModel to command
-        CreateMap<ProdutoViewModel, CadastrarProdutoCommand>();
+        CreateMap<CadastroProdutoViewModel, CadastrarProdutoCommand>();
         
         //Command to domain
         CreateMap<CadastrarProdutoCommand, Produto>();
+        
+        //Domain to viewModel
+        CreateMap<Produto, ProdutoViewModel>();
     }
 }

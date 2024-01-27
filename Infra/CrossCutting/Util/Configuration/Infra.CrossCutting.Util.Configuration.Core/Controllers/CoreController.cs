@@ -23,12 +23,14 @@ public abstract class CoreController : ControllerBase
                 return Ok(new
                 {
                     success = true,
+                    time = DateTimeOffset.UtcNow,
                     data = result
                 });
 
             return Ok(new
             {
-                success = true
+                success = true,
+                time = DateTimeOffset.UtcNow
             });
         }
 

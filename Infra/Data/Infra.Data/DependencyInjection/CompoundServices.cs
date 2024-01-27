@@ -1,7 +1,9 @@
 ﻿using System.Data.Common;
-using Application.Authorization.AppService;
+using Application.AppService;
 using Application.AutoMapper;
 using Application.Interface;
+using Application.Inventario.AppService;
+using Application.Inventario.Interface;
 using Domain.Authentication.Commands;
 using Domain.Authentication.Interface;
 using Domain.Authentication.Inventario.Commands;
@@ -11,7 +13,8 @@ using Infra.CrossCutting.Util.Notifications.Implementation;
 using Infra.CrossCutting.Util.Notifications.Interface;
 using Infra.Data.Authentication.Context;
 using Infra.Data.Authentication.Repository;
-using Infra.Data.Produto.Repository;
+using Infra.Data.Inventario.Context;
+using Infra.Data.Inventario.Repository;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -45,6 +48,12 @@ public class CompoundServices
             opt.UseNpgsql(dbConnection, assembly =>
                 assembly.MigrationsAssembly(typeof(AuthenticationContext).Assembly.FullName));
         });
+        
+        serviceProvider.AddDbContext<InventarioContext>(opt =>
+        {
+            opt.UseNpgsql(dbConnection, assembly =>
+                assembly.MigrationsAssembly(typeof(InventarioContext).Assembly.FullName));
+        });
 
         //Auto mapper
         var mapper = AutoMapperConfig.RegisterMaps().CreateMapper();
@@ -58,12 +67,12 @@ public class CompoundServices
         
         //Authetication
         serviceProvider.AddScoped<IUsuarioRepository, UsuarioRepository>();
+        serviceProvider.AddScoped<IAuthorizationAppService, AuthorizationAppService>();
         
         //Inventario
-        serviceProvider.AddScoped<IProdutoRepository, ProdutoRepository>();
-
-        //Authorization
-        serviceProvider.AddScoped<IAuthorizationAppService, AuthorizationAppService>();
+        serviceProvider.AddScoped<IInventarioRepository, InventarioRepository>();
+        serviceProvider.AddScoped<IInventarioAppService, InventarioAppService>();
+   
 
         //Mediatr
         serviceProvider.AddMediatR(config =>
