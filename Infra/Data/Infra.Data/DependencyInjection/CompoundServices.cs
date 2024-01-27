@@ -1,4 +1,5 @@
-﻿using System.Data.Common;
+﻿using System.Data;
+using System.Data.Common;
 using Application.AppService;
 using Application.AutoMapper;
 using Application.Interface;
@@ -42,6 +43,8 @@ public class CompoundServices
 
         DbConnection dbConnection = new NpgsqlConnection(configuration.GetConnectionString("app"));
 
+        serviceProvider.AddTransient<IDbConnection>(db => new NpgsqlConnection(configuration.GetConnectionString("app")));
+        
         //Para adicionar mais contextos é necessário repetir o addDbContext
         serviceProvider.AddDbContext<AuthenticationContext>(opt =>
         {
@@ -70,7 +73,7 @@ public class CompoundServices
         serviceProvider.AddScoped<IAuthorizationAppService, AuthorizationAppService>();
         
         //Inventario
-        serviceProvider.AddScoped<IInventarioRepository, InventarioRepository>();
+        serviceProvider.AddScoped<IProdutoRepository, ProdutoRepository>();
         serviceProvider.AddScoped<IInventarioAppService, InventarioAppService>();
    
 

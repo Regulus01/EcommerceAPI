@@ -10,13 +10,13 @@ namespace Domain.Authentication.Inventario.Handle;
 
 public class ProdutoCommandHandler : IRequestHandler<CadastrarProdutoCommand> 
 {
-    private readonly IInventarioRepository _inventarioRepository;
+    private readonly IProdutoRepository _produtoRepository;
     private readonly IMapper _mapper;
     private readonly Notify _notify;
 
-    public ProdutoCommandHandler(IInventarioRepository inventarioRepository, IMapper mapper, INotify notify)
+    public ProdutoCommandHandler(IProdutoRepository produtoRepository, IMapper mapper, INotify notify)
     {
-        _inventarioRepository = inventarioRepository;
+        _produtoRepository = produtoRepository;
         _mapper = mapper;
         _notify = notify.Invoke();
     }
@@ -25,9 +25,9 @@ public class ProdutoCommandHandler : IRequestHandler<CadastrarProdutoCommand>
     {
         var produto = _mapper.Map<Produto>(request);
         
-        _inventarioRepository.Add(produto);
+        _produtoRepository.Add(produto);
         
-        if (!_inventarioRepository.Commit())
+        if (!_produtoRepository.Commit())
         {
             _notify.NewNotification("Erro", "Erro ao inserir dados");
             return Task.FromResult(cancellationToken);

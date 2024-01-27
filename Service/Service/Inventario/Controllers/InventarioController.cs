@@ -11,7 +11,7 @@ namespace Service.Inventario.Controllers;
 
 [ApiController]
 [Route("api/Inventario/")]
-public class InventarioController : CoreController
+public partial class InventarioController : CoreController
 {
     private IInventarioAppService _appService;
 
@@ -37,23 +37,5 @@ public class InventarioController : CoreController
         _appService.InserirProdutos(viewModel);
         
         return ApiResponse();
-    }
-
-    /// <summary>
-    ///     EndPoint utilizado para obter um produto do sistema
-    /// </summary>
-    /// <remarks>
-    ///     EndPoint utilizado obter produto especifico
-    /// </remarks>
-    /// <param name="id">Id do produto</param>
-    /// <returns>Produto do sistema</returns>
-    [HttpGet]
-    [Route("Produto")]
-    [AllowAnonymous]
-    public IActionResult CadastrarProdutos([FromQuery] Guid id)
-    {
-        var response = _appService.ObterProduto(id);
-        
-        return ApiResponse(response);
     }
 }

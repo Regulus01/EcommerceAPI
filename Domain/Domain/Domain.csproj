@@ -20,4 +20,10 @@
       <ProjectReference Include="..\..\Infra\CrossCutting\Util\Notifications\Infra.CrossCutting.Util.Notifications\Infra.CrossCutting.Util.Notifications.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Reference Include="Application">
+        <HintPath>..\..\Service\Service\bin\Debug\net8.0\Application.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
 </Project>

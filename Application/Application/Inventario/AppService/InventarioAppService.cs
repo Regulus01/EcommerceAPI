@@ -2,6 +2,7 @@
 using Application.Inventario.ViewModels;
 using AutoMapper;
 using Domain.Authentication.Inventario.Commands;
+using Domain.Authentication.Inventario.Entities;
 using Domain.Authentication.Inventario.Interface;
 using Infra.CrossCutting.Util.Notifications.Implementation;
 using Infra.CrossCutting.Util.Notifications.Interface;
@@ -14,14 +15,14 @@ public class InventarioAppService : IInventarioAppService
     private readonly Notify _notify;
     private readonly IMediator _mediator;
     private readonly IMapper _mapper;
-    private readonly IInventarioRepository _inventarioRepository;
+    private readonly IProdutoRepository _produtoRepository;
 
-    public InventarioAppService(INotify notify, IMediator mediator, IMapper mapper, IInventarioRepository inventarioRepository)
+    public InventarioAppService(INotify notify, IMediator mediator, IMapper mapper, IProdutoRepository produtoRepository)
     {
         _notify = notify.Invoke();
         _mediator = mediator;
         _mapper = mapper;
-        _inventarioRepository = inventarioRepository;
+        _produtoRepository = produtoRepository;
     }
     
     public void InserirProdutos(CadastroProdutoViewModel viewModel)
@@ -43,10 +44,35 @@ public class InventarioAppService : IInventarioAppService
         _mediator.Send(command);
     }
 
-    public ProdutoViewModel ObterProduto(Guid id)
+    public ProdutoViewModel? ObterProduto(Guid id)
     {
-        var produto = _inventarioRepository.ObterProduto(x => x.Id == id);
+        if (id.Equals(Guid.Empty))
+        {
+            _notify.NewNotification("Erro", "Id não informado");
+            return null;
+        }
+        
+        var produto = _produtoRepository.ObterProduto(x => x.Id == id);
 
         return _mapper.Map<ProdutoViewModel>(produto);
+    }
+
+    public IEnumerable<ProdutoListagemViewModel> Listagem(int skip, int take)
+    {
+        if (skip <= 0)
+        {
+            _notify.NewNotification("Erro", "Inicio da listagem não pode ser 0");
+            return new List<ProdutoListagemViewModel>();
+        }
+        
+        if (take <= 0)
+        {
+            _notify.NewNotification("Erro", "Tamanho da listagem não pode ser 0");
+            return new List<ProdutoListagemViewModel>();
+        }
+        
+        var produtos = _produtoRepository.Listagem(skip, take);
+
+        return produtos;
     }
 }
