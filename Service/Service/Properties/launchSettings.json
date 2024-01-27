@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "Service.Authentication": {
+    "Service.MarketPlace": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": false,
