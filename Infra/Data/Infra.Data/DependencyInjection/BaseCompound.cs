@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using ConfigurationDomain = Domain.Authentication.Configuration;
 
 namespace Infra.Data.DependencyInjection;
 
@@ -18,7 +17,7 @@ public class BaseCompound
         serviceProvider.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         
         // Jwt config
-        var key = Encoding.ASCII.GetBytes(ConfigurationDomain.Configuration.JwtKey);
+        var key = Encoding.ASCII.GetBytes(Configuration.JwtKey);
         serviceProvider.AddAuthentication(x =>
         {
             x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

@@ -11,6 +11,7 @@ public class AutoMapperConfig
         {
             config.AddProfile<AuthenticationMapProfile>();
             config.AddProfile<InventarioMapProfile>();
+            config.AddProfile<GerenciadorDeArquivosMapProfile>();
         });
     }
 }

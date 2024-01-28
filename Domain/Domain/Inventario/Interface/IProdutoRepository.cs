@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
-using Application.Inventario.ViewModels;
 using Domain.Authentication.Inventario.Entities;
 using Infra.CrossCutting.Util.Configuration.Core.Repository;
+using Infra.Data.Inventario.DbViewModels;
 
 namespace Domain.Authentication.Inventario.Interface;
 
@@ -20,6 +20,6 @@ public interface IProdutoRepository : IBaseRepository
     /// <param name="skip">Inicio da listagem</param>
     /// <param name="take">Quantidade de elementos</param>
     /// <returns>Lista com produtos</returns>
-    IEnumerable<ProdutoListagemViewModel> Listagem(int skip, int take);
+    IEnumerable<DbProdutoListagemViewModel> Listagem(int skip, int take);
 
 }

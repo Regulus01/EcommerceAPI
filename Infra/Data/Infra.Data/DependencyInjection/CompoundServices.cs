@@ -1,10 +1,15 @@
 ﻿using System.Data;
 using System.Data.Common;
 using Application.AppService;
+using Application.Arquivos.AppService;
+using Application.Arquivos.Interface;
 using Application.AutoMapper;
 using Application.Interface;
 using Application.Inventario.AppService;
 using Application.Inventario.Interface;
+using Domain.Arquivos.Commands;
+using Domain.Arquivos.Entities;
+using Domain.Arquivos.Interfaces;
 using Domain.Authentication.Commands;
 using Domain.Authentication.Interface;
 using Domain.Authentication.Inventario.Commands;
@@ -12,6 +17,8 @@ using Domain.Authentication.Inventario.Interface;
 using Infra.CrossCutting.Util.Notifications.Handler;
 using Infra.CrossCutting.Util.Notifications.Implementation;
 using Infra.CrossCutting.Util.Notifications.Interface;
+using Infra.Data.Arquivos.Context;
+using Infra.Data.Arquivos.Repository;
 using Infra.Data.Authentication.Context;
 using Infra.Data.Authentication.Repository;
 using Infra.Data.Inventario.Context;
@@ -57,6 +64,12 @@ public class CompoundServices
             opt.UseNpgsql(dbConnection, assembly =>
                 assembly.MigrationsAssembly(typeof(InventarioContext).Assembly.FullName));
         });
+        
+        serviceProvider.AddDbContext<GerenciadorDeArquivosContext>(opt =>
+        {
+            opt.UseNpgsql(dbConnection, assembly =>
+                assembly.MigrationsAssembly(typeof(GerenciadorDeArquivosContext).Assembly.FullName));
+        });
 
         //Auto mapper
         var mapper = AutoMapperConfig.RegisterMaps().CreateMapper();
@@ -76,6 +89,9 @@ public class CompoundServices
         serviceProvider.AddScoped<IProdutoRepository, ProdutoRepository>();
         serviceProvider.AddScoped<IInventarioAppService, InventarioAppService>();
    
+        //Gerenciador de arquivos
+        serviceProvider.AddScoped<IGerenciadorDeArquivoAppService, GerenciadorDeArquivosAppService>();
+        serviceProvider.AddScoped<IGerenciadorDeArquivosRepository, GerenciadorDeArquivosRepository>();
 
         //Mediatr
         serviceProvider.AddMediatR(config =>
@@ -86,6 +102,9 @@ public class CompoundServices
             
             //Inventario
             config.RegisterServicesFromAssemblies(typeof(CadastrarProdutoCommand).Assembly);
+            
+            //Gerenciador de arquivos
+            config.RegisterServicesFromAssemblies(typeof(GerenciadorDeArquivosCommand).Assembly);
         });
     }
 }

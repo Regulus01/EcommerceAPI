@@ -1,13 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.Runtime.Serialization;
-
-namespace Application.Inventario.ViewModels;
+﻿namespace Application.Inventario.ViewModels;
 
 public class ProdutoListagemViewModel
 {
-    public Guid Pro_Id { get; set; }
+    public Guid Id { get; set; }
     
-    public string Pro_Nome { get; set; }
+    public string Nome { get; set; }
 
-    public decimal Pro_Preco { get; set; }
+    public decimal Preco { get; set; }
 }

@@ -2,7 +2,6 @@
 using Application.Inventario.ViewModels;
 using AutoMapper;
 using Domain.Authentication.Inventario.Commands;
-using Domain.Authentication.Inventario.Entities;
 using Domain.Authentication.Inventario.Interface;
 using Infra.CrossCutting.Util.Notifications.Implementation;
 using Infra.CrossCutting.Util.Notifications.Interface;
@@ -72,7 +71,7 @@ public class InventarioAppService : IInventarioAppService
         }
         
         var produtos = _produtoRepository.Listagem(skip, take);
-
-        return produtos;
+        
+        return _mapper.Map<IEnumerable<ProdutoListagemViewModel>>(produtos);;
     }
 }

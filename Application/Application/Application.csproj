@@ -9,6 +9,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Domain\Domain\Domain.csproj" />
+      <ProjectReference Include="..\..\Infra\CrossCutting\Util\Infra.CrossCutting.Util.Enums\Infra.CrossCutting.Util.Enums.csproj" />
       <ProjectReference Include="..\..\Infra\CrossCutting\Util\Notifications\Infra.CrossCutting.Util.Notifications\Infra.CrossCutting.Util.Notifications.csproj" />
     </ItemGroup>
 
