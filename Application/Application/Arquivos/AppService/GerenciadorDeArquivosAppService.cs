@@ -21,10 +21,12 @@ public class GerenciadorDeArquivosAppService : IGerenciadorDeArquivoAppService
         //_usuarioRepository = usuarioRepository;
         _notify = notify.Invoke();
     }
-    public async Task EnviarArquivoS3(EnviarGerenciadorDeArquivoViewModel entidade)
+    public async Task<string?> EnviarArquivoS3(EnviarGerenciadorDeArquivoViewModel entidade)
     {
         var command = _mapper.Map<GerenciadorDeArquivosCommand>(entidade);
         
-        await _mediator.Send(command);
+        var response = await _mediator.Send(command);
+
+        return response?.Caminho;
     }
 }

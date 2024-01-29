@@ -32,4 +32,14 @@ public class BaseRepository<TContext, TL> where TContext : DbContext
     {
         _context.Add(entity);
     }
+    
+    public T? Find<T>(Guid id) where T : class
+    {
+        return _context.Find<T>(id);
+    }
+
+    public void Delete<T>(T entity) where T : class
+    {
+        _context.Remove(entity);
+    }
 }

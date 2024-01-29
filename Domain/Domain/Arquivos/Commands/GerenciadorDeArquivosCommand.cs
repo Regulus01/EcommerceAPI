@@ -1,10 +1,11 @@
-﻿using Enums.Enums;
+﻿using Domain.Arquivos.Commands.Events;
+using Enums.Enums;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 
 namespace Domain.Arquivos.Commands;
 
-public class GerenciadorDeArquivosCommand : IRequest
+public class GerenciadorDeArquivosCommand : IRequest<ArquivoIncluidoEvent?>
 {
     public IFormFile Arquivo { get; set; }
     public Guid EntidadeId { get; set; }

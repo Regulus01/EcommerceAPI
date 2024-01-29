@@ -4,5 +4,5 @@ namespace Application.Arquivos.Interface;
 
 public interface IGerenciadorDeArquivoAppService
 {
-    Task EnviarArquivoS3(EnviarGerenciadorDeArquivoViewModel entidade);
+    Task<string?> EnviarArquivoS3(EnviarGerenciadorDeArquivoViewModel entidade);
 }

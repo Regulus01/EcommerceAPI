@@ -25,7 +25,7 @@ public class GerenciadorDeArquivosController : CoreController
     [AllowAnonymous]
     public async Task<IActionResult> EnviarArquivo([FromForm] EnviarGerenciadorDeArquivoViewModel arquivo)
     {
-        await _appService.EnviarArquivoS3(arquivo);
-        return ApiResponse();
+        var response = await _appService.EnviarArquivoS3(arquivo);
+        return ApiResponse(response);
     }
 }

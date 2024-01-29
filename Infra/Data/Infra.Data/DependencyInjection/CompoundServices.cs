@@ -1,5 +1,8 @@
 ﻿using System.Data;
 using System.Data.Common;
+using Amazon;
+using Amazon.Runtime;
+using Amazon.S3;
 using Application.AppService;
 using Application.Arquivos.AppService;
 using Application.Arquivos.Interface;
@@ -51,6 +54,21 @@ public class CompoundServices
         DbConnection dbConnection = new NpgsqlConnection(configuration.GetConnectionString("app"));
 
         serviceProvider.AddTransient<IDbConnection>(db => new NpgsqlConnection(configuration.GetConnectionString("app")));
+        
+        //Aws configuration
+        //S3
+        var awsConnectionString = configuration.GetConnectionString("AwsS3")?.Split(";");
+        
+        var awsKey = awsConnectionString?[0].Split("key=")[1];
+        var awsKeySecret = awsConnectionString?[1].Split("secret=")[1];
+        
+        var awsCredentials = new BasicAWSCredentials(awsKey, awsKeySecret);
+        var config = new AmazonS3Config
+        {
+            RegionEndpoint = RegionEndpoint.USEast2
+        };
+
+        serviceProvider.AddScoped<IAmazonS3>(aws => new AmazonS3Client(awsCredentials, config));
         
         //Para adicionar mais contextos é necessário repetir o addDbContext
         serviceProvider.AddDbContext<AuthenticationContext>(opt =>

@@ -6,7 +6,8 @@ para otimizar a gestão e manutenção do sistema.
 
 ## O que é necessário para executar?
 
-Para iniciar o projeto localmente, é imprescindível seguir alguns passos essenciais. Primeiramente, crie um arquivo denominado "appsettings.json" e o coloque na pasta denominada "config".
+Para iniciar o projeto localmente, é imprescindível seguir alguns passos essenciais. Primeiramente, 
+crie um arquivo denominado "appsettings.json" e o coloque na pasta denominada "config".
 
 Nesse arquivo deverá incluir a string de conexão no seguinte formato. Certifique-se 
 de que o banco de dados utilizado seja o PostgreSQL:
@@ -14,13 +15,17 @@ de que o banco de dados utilizado seja o PostgreSQL:
 {
 "ConnectionStrings": {
 "App": "Server=*****;* Database=****; User id=*****; Password=*****;"
+"AwsS3": "key=*******; secret=********"
     }
 }
 ```
 
-Após a criação do arquivo de configuração, build o projeto e  execute as migrações nas respectivas pastas de infraestrutura de dados, 
-abrangendo todos os contextos necessários.
+Após a criação do arquivo de configuração, build o projeto e  execute as migrações nas respectivas pastas de 
+infraestrutura de dados, abrangendo todos os contextos necessários.
 
+#### Observação: 
+É necessário configurar os serviços da AWS para utilizar alguns recursos, como por exemplo 
+o gerenciador de arquivos.
 
 ## API Reference
 
@@ -83,6 +88,7 @@ abrangendo todos os contextos necessários.
 ## Tecnologias
 
 * Aws RDS
+* Aws S3
 * Entity Framework
 * Dotnet 8.0
 * Postgres SQL
