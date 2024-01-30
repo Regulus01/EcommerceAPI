@@ -7,7 +7,6 @@ namespace Infra.Data.Arquivos.Context;
 public class GerenciadorDeArquivosContext : DbContext
 {
     public DbSet<GerenciadorDeArquivos> Arquivos { get; set; }
-
     
     public GerenciadorDeArquivosContext()
     {

@@ -7,12 +7,16 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Application\Application\Application.csproj" />
-      <ProjectReference Include="..\..\Infra\Data\Infra.Configuration\Infra.Configuration.csproj" />
+      <ProjectReference Include="..\Application\Application.csproj" />
+      <ProjectReference Include="..\CrossCutting\Util\Configuration\CrossCutting.Util.Configuration.Core\CrossCutting.Util.Configuration.Core.csproj" />
+      <ProjectReference Include="..\CrossCutting\Util\Notifications\CrossCutting.Util.Notifications\CrossCutting.Util.Notifications.csproj" />
+      <ProjectReference Include="..\Domain\Domain.csproj" />
+      <ProjectReference Include="..\Infra\Data\Infra.Configuration\Infra.Configuration.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Authorization\" />
+      <_ContentIncludedByDefault Remove="Service\obj\project.assets.json" />
+      <_ContentIncludedByDefault Remove="Service\obj\Service.csproj.nuget.dgspec.json" />
     </ItemGroup>
 
     <PropertyGroup>
