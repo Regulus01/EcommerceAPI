@@ -52,7 +52,7 @@ public class GerenciadorDeArquivosCommandHandler : IRequestHandler<GerenciadorDe
             _repository.Add(gerenciador);
 
             if (_repository.Commit()) 
-                return new ArquivoIncluidoEvent(arquivo.Id, caminho);
+                return new ArquivoIncluidoEvent(gerenciador.Id, caminho);
             
             _notify.NewNotification("Erro", "Falha ao incluir arquivos no banco de dados");
             return null;
