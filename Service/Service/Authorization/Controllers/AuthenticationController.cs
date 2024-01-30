@@ -1,7 +1,7 @@
 using Application.Authorization.ViewModels;
 using Application.Interface;
 using Application.ViewModels;
-using Infra.CrossCutting.Util.Configuration.Core.Controllers;
+using CrossCutting.Util.Configuration.Core.Controllers;
 using Infra.CrossCutting.Util.Notifications.Model;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;

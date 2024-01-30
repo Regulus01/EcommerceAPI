@@ -4,7 +4,7 @@ using Application.Interface;
 using Application.ViewModels;
 using AutoMapper;
 using Domain.Authentication.Commands;
-using Domain.Authentication.Interface;
+using Domain.Interface;
 using Infra.CrossCutting.Util.Notifications.Implementation;
 using Infra.CrossCutting.Util.Notifications.Interface;
 using MediatR;

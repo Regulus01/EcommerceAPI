@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
 using Domain.Authentication.Entities;
-using Domain.Authentication.Interface;
-using Infra.CrossCutting.Util.Configuration.Core.Repository;
+using Domain.Base;
+using Domain.Interface;
 using Infra.Data.Authentication.Context;
 using Microsoft.EntityFrameworkCore.Query;
 using Microsoft.Extensions.Logging;

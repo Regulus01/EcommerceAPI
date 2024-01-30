@@ -1,9 +1,9 @@
 ﻿using System.Linq.Expressions;
 using Domain.Authentication.Inventario.Entities;
-using Infra.CrossCutting.Util.Configuration.Core.Repository;
+using Domain.Base;
 using Infra.Data.Inventario.DbViewModels;
 
-namespace Domain.Authentication.Inventario.Interface;
+namespace Domain.Inventario.Interface;
 
 public interface IProdutoRepository : IBaseRepository
 {

@@ -1,6 +1,7 @@
+using Infra.CrossCutting.Util.Notifications.Model;
 using Newtonsoft.Json;
 
-namespace Infra.CrossCutting.Util.Configuration.Core.Response;
+namespace CrossCutting.Util.Configuration.Core.Response;
 
 public class ApiResponse
 {
@@ -8,7 +9,7 @@ public class ApiResponse
     {
     }
 
-    public ApiResponse(string verbDescription, List<Notifications.Model.Notifications> exception, string? target = null)
+    public ApiResponse(string verbDescription, List<Notifications> exception, string? target = null)
     {
         var response = GetCompleteException(verbDescription, exception, target);
         Error = response.Error;
@@ -28,7 +29,7 @@ public class ApiResponse
     public ApiResponse? InnerError { get; private set; }
 
     private static ApiResponse GetCompleteException(string verbDescription,
-        List<Notifications.Model.Notifications> validationErrors, string target)
+        List<Notifications> validationErrors, string target)
     {
         var response = new ApiResponse
         {

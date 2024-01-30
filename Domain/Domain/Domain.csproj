@@ -11,13 +11,13 @@
       <PackageReference Include="AWSSDK.S3" Version="3.7.305.17" />
       <PackageReference Include="MediatR" Version="12.1.1" />
       <PackageReference Include="MediatR.Contracts" Version="2.0.1" />
+      <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
       <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.2.0" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Infra\CrossCutting\Util\Configuration\Infra.CrossCutting.Util.Configuration.Core\Infra.CrossCutting.Util.Configuration.Core.csproj" />
-      <ProjectReference Include="..\..\Infra\CrossCutting\Util\Infra.CrossCutting.Util.Enums\Infra.CrossCutting.Util.Enums.csproj" />
-      <ProjectReference Include="..\..\Infra\CrossCutting\Util\Notifications\Infra.CrossCutting.Util.Notifications\Infra.CrossCutting.Util.Notifications.csproj" />
+      <ProjectReference Include="..\..\Infra\CrossCutting\Util\Configuration\CrossCutting.Util.Configuration.Core\CrossCutting.Util.Configuration.Core.csproj" />
+      <ProjectReference Include="..\..\Infra\CrossCutting\Util\Notifications\CrossCutting.Util.Notifications\CrossCutting.Util.Notifications.csproj" />
     </ItemGroup>
 </Project>

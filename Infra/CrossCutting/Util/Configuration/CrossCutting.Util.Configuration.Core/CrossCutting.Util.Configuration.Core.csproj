@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Notifications\Infra.CrossCutting.Util.Notifications\Infra.CrossCutting.Util.Notifications.csproj" />
+      <ProjectReference Include="..\..\Notifications\CrossCutting.Util.Notifications\CrossCutting.Util.Notifications.csproj" />
     </ItemGroup>
 
     <ItemGroup>

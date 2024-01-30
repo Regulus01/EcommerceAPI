@@ -1,22 +1,19 @@
 using System.Reflection;
-using Infra.Data.DependencyInjection;
+using Infra.Configuration.Configuration;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//Servicos
-CompoundServices.Register(builder.Services);
+ConfigureServices.Register(builder.Services);
 
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "MarketPlaceAPI", Version = "v1" });
-    
+
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     c.IncludeXmlComments(xmlPath);
-    
+
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
@@ -39,16 +36,19 @@ builder.Services.AddSwaggerGen(c =>
             },
             Array.Empty<string>()
         }
-    }); 
+    });
 });
+
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(b =>
+    options.AddDefaultPolicy(corsPolicy =>
     {
-        b.AllowAnyOrigin()
-            .AllowAnyMethod()
-            .AllowAnyHeader();
+        corsPolicy.AllowAnyOrigin()
+                  .AllowAnyMethod()
+                  .AllowAnyHeader();
     });
 });
 

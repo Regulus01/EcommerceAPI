@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace Infra.CrossCutting.Util.Configuration.Core.Response;
+namespace CrossCutting.Util.Configuration.Core.Response;
 
 public class Error
 {

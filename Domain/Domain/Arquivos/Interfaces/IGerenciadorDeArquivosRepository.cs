@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 using Domain.Arquivos.Entities;
-using Infra.CrossCutting.Util.Configuration.Core.Repository;
+using Domain.Base;
 using Microsoft.EntityFrameworkCore.Query;
 
 namespace Domain.Arquivos.Interfaces;

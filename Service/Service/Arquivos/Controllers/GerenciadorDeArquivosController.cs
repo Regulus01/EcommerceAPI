@@ -1,6 +1,6 @@
 ﻿using Application.Arquivos.Interface;
 using Application.Arquivos.ViewModels;
-using Infra.CrossCutting.Util.Configuration.Core.Controllers;
+using CrossCutting.Util.Configuration.Core.Controllers;
 using Infra.CrossCutting.Util.Notifications.Model;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -20,6 +20,12 @@ public class GerenciadorDeArquivosController : CoreController
         _appService = appService;
     }
 
+    
+    /// <summary>
+    /// Método para inserir um arquivo no sistema
+    /// </summary>
+    /// <param name="arquivo">Campos necessário para inserção do arquivo</param>
+    /// <returns>Url do arquivo</returns>
     [HttpPost]
     [Route("GerenciadorDeArquivos")]
     [AllowAnonymous]

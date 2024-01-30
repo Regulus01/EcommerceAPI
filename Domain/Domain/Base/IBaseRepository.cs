@@ -1,4 +1,4 @@
-﻿namespace Infra.CrossCutting.Util.Configuration.Core.Repository;
+﻿namespace Domain.Base;
 
 public interface IBaseRepository
 {

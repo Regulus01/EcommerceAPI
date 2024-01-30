@@ -1,8 +1,8 @@
 ﻿using System.Data;
 using System.Linq.Expressions;
 using Dapper;
-using Domain.Authentication.Inventario.Interface;
-using Infra.CrossCutting.Util.Configuration.Core.Repository;
+using Domain.Base;
+using Domain.Inventario.Interface;
 using Infra.Data.Inventario.Context;
 using Infra.Data.Inventario.DbViewModels;
 using Microsoft.Extensions.Logging;

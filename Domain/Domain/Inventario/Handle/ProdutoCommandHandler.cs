@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Domain.Authentication.Inventario.Commands;
 using Domain.Authentication.Inventario.Entities;
-using Domain.Authentication.Inventario.Interface;
+using Domain.Inventario.Interface;
 using Infra.CrossCutting.Util.Notifications.Implementation;
 using Infra.CrossCutting.Util.Notifications.Interface;
 using MediatR;
