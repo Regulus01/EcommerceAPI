@@ -17,9 +17,4 @@
       <PackageReference Include="AutoMapper" Version="12.0.1" />
     </ItemGroup>
 
-    <ItemGroup>
-      <_ContentIncludedByDefault Remove="Application\obj\Application.csproj.nuget.dgspec.json" />
-      <_ContentIncludedByDefault Remove="Application\obj\project.assets.json" />
-    </ItemGroup>
-
 </Project>
