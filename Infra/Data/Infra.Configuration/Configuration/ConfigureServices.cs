@@ -180,6 +180,7 @@ public class ConfigureServices
             
             //Gerenciador de arquivos
             config.RegisterServicesFromAssemblies(typeof(GerenciadorDeArquivosCommand).Assembly);
+            config.RegisterServicesFromAssemblies(typeof(DeletarArquivoCommand).Assembly);
         });
     }
     

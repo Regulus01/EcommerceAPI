@@ -19,10 +19,9 @@ public class GerenciadorDeArquivosController : CoreController
     {
         _appService = appService;
     }
-
     
     /// <summary>
-    /// Método para inserir um arquivo no sistema
+    /// Endpoint para inserir um arquivo no sistema
     /// </summary>
     /// <param name="arquivo">Campos necessário para inserção do arquivo</param>
     /// <returns>Url do arquivo</returns>
@@ -33,5 +32,18 @@ public class GerenciadorDeArquivosController : CoreController
     {
         var response = await _appService.EnviarArquivoS3(arquivo);
         return ApiResponse(response);
+    }
+
+    /// <summary>
+    /// Endpoint para deletar um arquivo no sistema
+    /// </summary>
+    /// <param name="id">Id do arquivo no gerenciador</param>
+    [HttpDelete]
+    [Route("GerenciadorDeArquivos/{id:guid}")]
+    [AllowAnonymous]
+    public async Task<IActionResult> DeletarArquivo(Guid id)
+    {
+        await _appService.DeletarArquivo(id);
+        return ApiResponse();
     }
 }

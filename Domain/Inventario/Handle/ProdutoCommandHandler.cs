@@ -6,7 +6,7 @@ using Infra.CrossCutting.Util.Notifications.Implementation;
 using Infra.CrossCutting.Util.Notifications.Interface;
 using MediatR;
 
-namespace Domain.Authentication.Inventario.Handle;
+namespace Domain.Inventario.Handle;
 
 public class ProdutoCommandHandler : IRequestHandler<CadastrarProdutoCommand> 
 {

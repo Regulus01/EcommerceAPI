@@ -10,7 +10,7 @@ using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace Domain.Authentication.Handle;
+namespace Domain.Handle;
 
 public class AuthenticationCommandHandler : IRequestHandler<CadastrarUsuarioCommand>, 
                                             IRequestHandler<LoginCommand, TokenModel>

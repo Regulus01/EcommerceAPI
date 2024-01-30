@@ -29,4 +29,11 @@ public class GerenciadorDeArquivosAppService : IGerenciadorDeArquivoAppService
 
         return response?.Caminho;
     }
+
+    public async Task DeletarArquivo(Guid id)
+    {
+        var command = new DeletarArquivoCommand(id);
+        
+        await _mediator.Send(command);
+    }
 }
