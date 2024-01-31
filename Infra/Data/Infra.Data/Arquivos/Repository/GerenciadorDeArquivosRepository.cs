@@ -17,7 +17,7 @@ public class GerenciadorDeArquivosRepository : BaseRepository<GerenciadorDeArqui
         
     }
 
-    public GerenciadorDeArquivos? ObterArquivo(Expression<Func<GerenciadorDeArquivos, bool>> predicate, 
+    public IQueryable<GerenciadorDeArquivos> ObterArquivos(Expression<Func<GerenciadorDeArquivos, bool>> predicate,
         Func<IQueryable<GerenciadorDeArquivos>, IIncludableQueryable<GerenciadorDeArquivos, object>>? includes = null)
     {
         var query = _context.Arquivos.AsQueryable();
@@ -25,7 +25,7 @@ public class GerenciadorDeArquivosRepository : BaseRepository<GerenciadorDeArqui
         if (includes != null)
             query = includes(query);
 
-        return query.FirstOrDefault(predicate);
+        return query.Where(predicate);
     }
     
 }

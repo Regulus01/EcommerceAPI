@@ -45,7 +45,7 @@ public class GerenciadorDeArquivosCommandHandler : IRequestHandler<GerenciadorDe
             gerenciador.InformeCaminho(caminho);
             gerenciador.InformeContentType(request.Arquivo.ContentType);
 
-            var arquivo = _repository.ObterArquivo(x => x.Ordem == request.Ordem);
+            var arquivo = _repository.ObterArquivos(x => x.Ordem == request.Ordem).FirstOrDefault();
             
             //Caso exista um arquivo com a mesma ordem, ele será deletado e o novo ficará no lugar
             if (arquivo != null)
@@ -66,7 +66,7 @@ public class GerenciadorDeArquivosCommandHandler : IRequestHandler<GerenciadorDe
 
     public async Task Handle(DeletarArquivoCommand request, CancellationToken cancellationToken)
     {
-        var arquivo = _repository.ObterArquivo(x => x.Id == request.Id);
+        var arquivo = _repository.ObterArquivos(x => x.Id == request.Id).FirstOrDefault();
         
         if (arquivo == null)
         {

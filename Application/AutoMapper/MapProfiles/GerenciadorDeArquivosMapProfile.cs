@@ -16,6 +16,7 @@ public class GerenciadorDeArquivosMapProfile : Profile
         CreateMap<GerenciadorDeArquivosCommand, GerenciadorDeArquivos>();
         
         //Domain to viewModel
+        CreateMap<GerenciadorDeArquivos, GetGerenciadorDeArquivosViewModel>();
      
     }
 }

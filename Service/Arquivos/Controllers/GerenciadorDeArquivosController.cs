@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Service.Arquivos.Controllers;
 
 [ApiController]
-[Route("api/Arquivo/")]
+[Route("api/GerenciadorDeArquivos/")]
 public class GerenciadorDeArquivosController : CoreController
 {
     private IGerenciadorDeArquivoAppService _appService;
@@ -26,12 +26,24 @@ public class GerenciadorDeArquivosController : CoreController
     /// <param name="arquivo">Campos necessário para inserção do arquivo</param>
     /// <returns>Url do arquivo</returns>
     [HttpPost]
-    [Route("GerenciadorDeArquivos")]
     [AllowAnonymous]
     public async Task<IActionResult> EnviarArquivo([FromForm] EnviarGerenciadorDeArquivoViewModel arquivo)
     {
         var response = await _appService.EnviarArquivoS3(arquivo);
         return ApiResponse(response);
+    }
+    
+    /// <summary>
+    /// Endpoint para obter arquivos de uma entidade
+    /// </summary>
+    /// <param name="id">Id da entidade</param>
+    [HttpGet]
+    [Route("{id:guid}")]
+    [AllowAnonymous]
+    public IActionResult ObterArquivos(Guid id)
+    {
+        var arquivos = _appService.ObterArquivos(id);
+        return ApiResponse(arquivos);
     }
 
     /// <summary>
@@ -39,7 +51,7 @@ public class GerenciadorDeArquivosController : CoreController
     /// </summary>
     /// <param name="id">Id do arquivo no gerenciador</param>
     [HttpDelete]
-    [Route("GerenciadorDeArquivos/{id:guid}")]
+    [Route("{id:guid}")]
     [AllowAnonymous]
     public async Task<IActionResult> DeletarArquivo(Guid id)
     {
