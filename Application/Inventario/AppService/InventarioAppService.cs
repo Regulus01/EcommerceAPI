@@ -1,7 +1,7 @@
 ﻿using Application.Inventario.Interface;
 using Application.Inventario.ViewModels;
 using AutoMapper;
-using Domain.Authentication.Inventario.Commands;
+using Domain.Inventario.Commands;
 using Domain.Inventario.Interface;
 using Infra.CrossCutting.Util.Notifications.Implementation;
 using Infra.CrossCutting.Util.Notifications.Interface;

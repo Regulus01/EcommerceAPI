@@ -20,6 +20,10 @@ public class ProdutoMap : IEntityTypeConfiguration<ProdutoDomain>
         builder.Property(x => x.Preco)
             .HasColumnName("Pro_Preco")
             .IsRequired();
+
+        builder.Property(x => x.Estoque)
+            .HasColumnName("Pro_Estoque")
+            .HasDefaultValue(0);
         
         builder.Property(x => x.CategoriaId)
             .HasColumnName("Cat_CategoriaId")

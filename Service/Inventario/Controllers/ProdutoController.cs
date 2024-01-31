@@ -10,12 +10,12 @@ using Microsoft.AspNetCore.Mvc;
 namespace Service.Inventario.Controllers;
 
 [ApiController]
-[Route("api/Inventario/")]
-public partial class InventarioController : CoreController
+[Route("api/Produto/")]
+public partial class ProdutoController : CoreController
 {
     private IInventarioAppService _appService;
 
-    public InventarioController(INotificationHandler<Notifications> notification, 
+    public ProdutoController(INotificationHandler<Notifications> notification, 
         IInventarioAppService appService) : base(notification)
     {
         _appService = appService;
@@ -30,7 +30,6 @@ public partial class InventarioController : CoreController
     /// <param name="viewModel">Dados necessários para cadastrar produtos</param>
     /// <returns>objeto com informações sobre a inclusão</returns>
     [HttpPost]
-    [Route("Produto")]
     [Authorize(RoleRegister.Admin.Nome)]
     public IActionResult CadastrarProdutos([FromBody] CadastroProdutoViewModel viewModel)
     {

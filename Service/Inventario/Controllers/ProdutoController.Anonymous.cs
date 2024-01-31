@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Service.Inventario.Controllers;
 
-public partial class InventarioController
+public partial class ProdutoController
 {
     
     /// <summary>
@@ -15,7 +15,7 @@ public partial class InventarioController
     /// <param name="id">Id do produto</param>
     /// <returns>Produto do sistema</returns>
     [HttpGet]
-    [Route("Produto/{id:guid}")]
+    [Route("{id:guid}")]
     [AllowAnonymous]
     public IActionResult CadastrarProdutos([FromRoute] Guid id)
     {
@@ -31,7 +31,6 @@ public partial class InventarioController
     /// <param name="take">Tamanho da listagem</param>
     /// <returns>Lista com produtos</returns>
     [HttpGet]
-    [Route("Produto")]
     [AllowAnonymous]
     public IActionResult ObterProdutos([FromQuery] int skip, [FromQuery] int take)
     {
