@@ -8,4 +8,5 @@ public class DbProdutoListagemViewModel
     public int Pro_Estoque { get; set; }
 
     public decimal Pro_Preco { get; set; }
+    public string Ger_CaminhoFotoDeCapa { get; set; }
 }

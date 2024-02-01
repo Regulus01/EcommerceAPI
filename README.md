@@ -1,30 +1,35 @@
 # Sobre o projeto
 
-O projeto é uma Web API para um marketplace, incorporando tecnologias em nuvem para potencializar sua escalabilidade e eficiência. 
-Este projeto adota uma abordagem baseada no Domain-Driven Design (DDD), organizando-o em contextos específicos 
+O projeto é uma Web API para um marketplace, incorporando tecnologias em nuvem para potencializar sua escalabilidade e
+eficiência.
+Este projeto adota uma abordagem baseada no Domain-Driven Design (DDD), organizando-o em contextos específicos
 para otimizar a gestão e manutenção do sistema.
 
 ## O que é necessário para executar?
 
-Para iniciar o projeto localmente, é imprescindível seguir alguns passos essenciais. Primeiramente, 
+Para iniciar o projeto localmente, é imprescindível seguir alguns passos essenciais. Primeiramente,
 crie um arquivo denominado "appsettings.json" e o coloque na pasta denominada "config".
 
-Nesse arquivo deverá incluir a string de conexão no seguinte formato. Certifique-se 
+Nesse arquivo deverá incluir a string de conexão no seguinte formato. Certifique-se
 de que o banco de dados utilizado seja o PostgreSQL:
+
 ```
 {
-"ConnectionStrings": {
-"App": "Server=*****;* Database=****; User id=*****; Password=*****;"
-"AwsS3": "key=*******; secret=********"
-    }
+  "ConnectionStrings": {
+    "App": "Server=****; Database=****; User id=****; Password=****;Include Error Detail = true"
+  },
+  "Aws": {
+    "S3": "key=****; secret=****"
+  }
 }
 ```
 
-Após a criação do arquivo de configuração, build o projeto e  execute as migrações nas respectivas pastas de 
+Após a criação do arquivo de configuração, build o projeto e execute as migrações nas respectivas pastas de
 infraestrutura de dados, abrangendo todos os contextos necessários.
 
-#### Observação: 
-É necessário configurar os serviços da AWS para utilizar alguns recursos, como por exemplo 
+#### Observação:
+
+É necessário configurar os serviços da AWS para utilizar alguns recursos, como por exemplo
 o gerenciador de arquivos.
 
 ## API Reference
@@ -34,7 +39,7 @@ o gerenciador de arquivos.
 #### Obtém o token de autenticação
 
 ```http
-  Post /api/Authentication
+  Post /api/authentication
 ```
 
 | Parameter  | Type     | Description                                        |
@@ -45,7 +50,7 @@ o gerenciador de arquivos.
 ### Cadastro no sistema
 
 ```http
-  Post /api/Cadastrar
+  Post /api/cadastrar
 ```
 
 | Parameter  | Type     | Description                                                |
@@ -57,8 +62,9 @@ o gerenciador de arquivos.
 ## Produto
 
 ### Cadastro de produtos
+
 ```http
-  Post /api/Produto
+  Post /api/produto
 ```
 
 | Parameter | Type     | Description                    |
@@ -67,23 +73,64 @@ o gerenciador de arquivos.
 | `Preco`   | `string` | **Required**. Preco do produto |
 
 ### Produtos por id
+
 ```http
-  GET /api/Produto/id
+  GET /api/produto/id
 ```
 
-| Parameter | Type     | Description                            |
-|:----------|:---------|:---------------------------------------|
-| `Id`      | `Guid`   | **Required**. Id do produto no sistema |
+| Parameter | Type   | Description                            |
+|:----------|:-------|:---------------------------------------|
+| `Id`      | `Guid` | **Required**. Id do produto no sistema |
 
 ### Listagem de produtos
+
 ```http
-  GET /api/Produto?
+  GET /api/produto?
 ```
 
-| Parameter | Type  | Description                      |
-|:----------|:------|:---------------------------------|
-| `Skip`    | `int` | **Required**. Inicio da listagem |
-| `Take`    | `int` | **Required**. Tamnho da listagem |
+| Parameter | Type  | Description                       |
+|:----------|:------|:----------------------------------|
+| `Skip`    | `int` | **Required**. Inicio da listagem  |
+| `Take`    | `int` | **Required**. Tamanho da listagem |
+
+### Atualização de foto de capa 
+
+```http
+  PATCH /api/produto/{id}/fotodeCapa
+```
+
+| Parameter           | Type     | Description                           |
+|:--------------------|:---------|:--------------------------------------|
+| `Id`                | `Guid`   | **Required**. Id do produto           |
+| `caminhoFotoDeCapa` | `string` | **Required**. Caminho da foto de capa |
+
+## GerenciadorDeArquivos (S3)
+
+```http
+  POST /api/gerenciador
+```
+
+| Parameter    | Type   | Description                                                                                     |
+|:-------------|:-------|:------------------------------------------------------------------------------------------------|
+| `EntidadeId` | `int`  | **Required**. Id da entidade da imagem ex: Produto                                              |
+| `Entidade`   | `enum` | **Required**. Nome da entidade do produto enum. 1 - Produto                                     |
+| `Ordem`      | `int`  | **Required**. Ordem para exibição das fotos, por regra, a ordem 1 é destinada para foto de capa |
+
+```http
+  Get /api/gerenciador/{entidadeId} - Obtem todos os arquivos de uma entidade
+```
+
+| Parameter | Type   | Description              |
+|:----------|:-------|:-------------------------|
+| `Id`      | `Guid` | **Required**. EntidadeId |
+
+```http
+  Dele /api/gerenciador/{Id} - Remove um arquivo do gerenciador e do S3
+```
+
+| Parameter | Type   | Description                      |
+|:----------|:-------|:---------------------------------|
+| `Id`      | `Guid` | **Required**.  Id do gerenciador |
 
 ## Tecnologias
 

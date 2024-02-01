@@ -78,9 +78,9 @@ public class InventarioAppService : IInventarioAppService
 
     public IEnumerable<ProdutoListagemViewModel> Listagem(int skip, int take)
     {
-        if (skip <= 0)
+        if (skip < 0)
         {
-            _notify.NewNotification("Erro", "Inicio da listagem não pode ser 0");
+            _notify.NewNotification("Erro", "Inicio da listagem não pode ser menor 0");
             return new List<ProdutoListagemViewModel>();
         }
         

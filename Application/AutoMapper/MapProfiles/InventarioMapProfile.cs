@@ -26,6 +26,7 @@ public class InventarioMapProfile : Profile
             .ForMember(x => x.Id, opt => opt.MapFrom(x => x.Pro_Id))
             .ForMember(x => x.Nome, opt => opt.MapFrom(x => x.Pro_Nome))
             .ForMember(x => x.Preco, opt => opt.MapFrom(x => x.Pro_Preco))
-            .ForMember(x => x.Estoque, opt => opt.MapFrom(x => x.Pro_Estoque));
+            .ForMember(x => x.Estoque, opt => opt.MapFrom(x => x.Pro_Estoque))
+            .ForMember(x => x.FotoDeCapa, opt => opt.MapFrom(x => x.Ger_CaminhoFotoDeCapa));
     }
 }

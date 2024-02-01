@@ -27,7 +27,7 @@ public class ProdutoRepository : BaseRepository<InventarioContext, ProdutoReposi
 
     public IEnumerable<DbProdutoListagemViewModel> Listagem(int skip, int take)
     {
-        var query = "select p.\"Pro_Id\", p.\"Pro_Nome\", p.\"Pro_Preco\", p.\"Pro_Estoque\"" +
+        var query = "select p.\"Pro_Id\", p.\"Pro_Nome\", p.\"Pro_Preco\", p.\"Pro_Estoque\", p.\"Ger_CaminhoFotoDeCapa\"" +
                     "from \"Inventario\".\"Produto\" p " +
                     $"offset {skip} limit {take}";
         
