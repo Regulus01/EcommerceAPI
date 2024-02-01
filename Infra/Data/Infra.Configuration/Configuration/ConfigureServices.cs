@@ -1,6 +1,5 @@
 ﻿using System.Data;
 using System.Data.Common;
-using System.Reflection;
 using System.Text;
 using Amazon;
 using Amazon.Runtime;
@@ -16,6 +15,8 @@ using Domain.Arquivos.Commands;
 using Domain.Arquivos.Interfaces;
 using Domain.Authentication.Commands;
 using Domain.Authentication.Configuration;
+using Domain.Authentication.Entities.Roles;
+using Domain.Entities.Roles;
 using Domain.Interface;
 using Domain.Inventario.Commands;
 using Domain.Inventario.Interface;
@@ -36,7 +37,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
 using Npgsql;
 using Notifications = Infra.CrossCutting.Util.Notifications.Model.Notifications;
 
@@ -177,6 +177,7 @@ public class ConfigureServices
             
             //Inventario
             config.RegisterServicesFromAssemblies(typeof(CadastrarProdutoCommand).Assembly);
+            config.RegisterServicesFromAssemblies(typeof(CaminhoFotoCapaCommand).Assembly);
             
             //Gerenciador de arquivos
             config.RegisterServicesFromAssemblies(typeof(GerenciadorDeArquivosCommand).Assembly);
@@ -206,45 +207,9 @@ public class ConfigureServices
                 ValidateIssuer = false
             };
         });
+        
+        serviceProvider.AddAuthorizationBuilder()
+                       .AddPolicy(RoleRegister.Admin.Nome, policy => policy.RequireRole(RoleRegister.Admin.Nome));
     }
-
-    /// <summary>
-    /// Configura o swagger e registra a injeção de dependência no contêiner de IoC.
-    /// </summary>
-    /// <param name="serviceProvider">O contêiner de IoC utilizado para registrar serviços.</param>
-    private static void ConfigureSwaggerGen(IServiceCollection serviceProvider)
-    {
-        serviceProvider.AddSwaggerGen(c =>
-        {
-            c.SwaggerDoc("v1", new OpenApiInfo { Title = "MarketPlaceAPI", Version = "v1" });
-
-            var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-            var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-            c.IncludeXmlComments(xmlPath);
-
-            c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-            {
-                Name = "Authorization",
-                Type = SecuritySchemeType.ApiKey,
-                Scheme = "Bearer",
-                BearerFormat = "JWT",
-                In = ParameterLocation.Header,
-                Description = "JWT Authorization header using the Bearer scheme",
-            });
-            c.AddSecurityRequirement(new OpenApiSecurityRequirement
-            {
-                {
-                    new OpenApiSecurityScheme
-                    {
-                        Reference = new OpenApiReference
-                        {
-                            Type = ReferenceType.SecurityScheme,
-                            Id = "Bearer"
-                        }
-                    },
-                    Array.Empty<string>()
-                }
-            });
-        });
-    }
+    
 }

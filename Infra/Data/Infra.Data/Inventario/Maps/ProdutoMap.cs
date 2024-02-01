@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ProdutoDomain = Domain.Authentication.Inventario.Entities.Produto;
+using ProdutoDomain = Domain.Inventario.Entities.Produto;
 
 namespace Infra.Data.Inventario.Maps;
 
@@ -24,6 +24,9 @@ public class ProdutoMap : IEntityTypeConfiguration<ProdutoDomain>
         builder.Property(x => x.Estoque)
             .HasColumnName("Pro_Estoque")
             .HasDefaultValue(0);
+
+        builder.Property(x => x.CaminhoFotoDeCapa)
+            .HasColumnName("Ger_CaminhoFotoDeCapa");
         
         builder.Property(x => x.CategoriaId)
             .HasColumnName("Cat_CategoriaId")

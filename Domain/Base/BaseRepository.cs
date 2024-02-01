@@ -32,7 +32,10 @@ public class BaseRepository<TContext, TL> where TContext : DbContext
     {
         _context.Add(entity);
     }
-    
+    public void Update<T>(T entity) where T : class
+    {
+        _context.Update(entity);
+    }
     public T? Find<T>(Guid id) where T : class
     {
         return _context.Find<T>(id);

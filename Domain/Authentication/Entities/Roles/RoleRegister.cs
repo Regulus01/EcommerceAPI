@@ -1,4 +1,4 @@
-﻿namespace Domain.Authentication.Entities.Roles;
+﻿namespace Domain.Entities.Roles;
 
 public static class RoleRegister
 {

@@ -43,6 +43,26 @@ public class InventarioAppService : IInventarioAppService
         _mediator.Send(command);
     }
 
+    public void AtualizarFotoDeCapa(Guid id, AtualizarCaminhoFotoDeCapaViewModel viewModel)
+    {
+        if (string.IsNullOrEmpty(viewModel.CaminhoFotoDeCapa))
+        {
+            _notify.NewNotification("Erro", "É necessário informar o a foto de capa");
+            return;
+        }
+        
+        if (id == Guid.Empty)
+        {
+            _notify.NewNotification("Erro", "É necessário informar o a foto de capa");
+            return;
+        }
+        
+        var command = _mapper.Map<CaminhoFotoCapaCommand>(viewModel);
+        command.Id = id;
+        
+        _mediator.Send(command);
+    }
+
     public ProdutoViewModel? ObterProduto(Guid id)
     {
         if (id.Equals(Guid.Empty))

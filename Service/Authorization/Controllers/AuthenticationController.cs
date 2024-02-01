@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Service.Authorization.Controllers;
 
 [ApiController]
-[Route("api/Authentication/")]
+[Route("api/authentication/")]
 public class AuthenticationController : CoreController
 {
     private IAuthorizationAppService _appService;
@@ -30,7 +30,7 @@ public class AuthenticationController : CoreController
     /// <param name="login">Dados necessários para o login</param>
     /// <returns>Token de autenticação</returns>
     [HttpPost]
-    [Route("Login")]
+    [Route("login")]
     [AllowAnonymous]
     public IActionResult ObterTokenDeAutenticacao(LoginViewModel? login)
     {
@@ -52,7 +52,7 @@ public class AuthenticationController : CoreController
     /// <response code="200">Retorna quando o usuário é cadastrado com sucesso</response>
     /// <response code="400">Retorna quando há um erro na requisição ou nos dados fornecidos</response>
     [HttpPost]
-    [Route("Cadastrar")]
+    [Route("cadastrar")]
     [AllowAnonymous]
     public IActionResult CadastrarUsuario(CadastroViewModel viewModel)
     {

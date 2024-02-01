@@ -1,5 +1,5 @@
 ﻿using System.Linq.Expressions;
-using Domain.Authentication.Inventario.Entities;
+using Domain.Inventario.Entities;
 using Domain.Base;
 using Infra.Data.Inventario.DbViewModels;
 

@@ -11,6 +11,13 @@ public interface IInventarioAppService
     void InserirProdutos(CadastroProdutoViewModel viewModel);
 
     /// <summary>
+    /// Atualiza caminho da foto de capa de um produto
+    /// </summary>
+    /// <param name="id">Id do produto para atualizacao</param>
+    /// <param name="viewModel">Dados necessários para atualizar o caminho de foto</param>
+    void AtualizarFotoDeCapa(Guid id, AtualizarCaminhoFotoDeCapaViewModel viewModel);
+    
+    /// <summary>
     /// Método para obter um produto do sistema
     /// </summary>
     /// <param name="id"></param>

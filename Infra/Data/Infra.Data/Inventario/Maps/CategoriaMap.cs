@@ -1,4 +1,4 @@
-﻿using Domain.Authentication.Inventario.Entities;
+﻿using Domain.Inventario.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

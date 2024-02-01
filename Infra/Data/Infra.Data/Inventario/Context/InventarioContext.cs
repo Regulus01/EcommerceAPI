@@ -1,6 +1,6 @@
 ﻿using Infra.Data.Inventario.Maps;
 using Microsoft.EntityFrameworkCore;
-using ProdutoDomain = Domain.Authentication.Inventario.Entities.Produto;
+using ProdutoDomain = Domain.Inventario.Entities.Produto;
 
 namespace Infra.Data.Inventario.Context;
 

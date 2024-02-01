@@ -6,7 +6,7 @@ using Domain.Inventario.Interface;
 using Infra.Data.Inventario.Context;
 using Infra.Data.Inventario.DbViewModels;
 using Microsoft.Extensions.Logging;
-using ProdutoDomain = Domain.Authentication.Inventario.Entities.Produto;
+using ProdutoDomain = Domain.Inventario.Entities.Produto;
 
 namespace Infra.Data.Inventario.Repository;
 

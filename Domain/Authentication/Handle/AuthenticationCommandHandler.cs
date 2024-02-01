@@ -3,6 +3,7 @@ using Domain.Authentication.Commands;
 using Domain.Authentication.Configuration;
 using Domain.Authentication.Entities;
 using Domain.Authentication.Entities.Roles;
+using Domain.Entities.Roles;
 using Domain.Interface;
 using Infra.CrossCutting.Util.Notifications.Implementation;
 using Infra.CrossCutting.Util.Notifications.Interface;

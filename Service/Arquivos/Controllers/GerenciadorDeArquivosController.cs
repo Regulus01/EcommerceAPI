@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Service.Arquivos.Controllers;
 
 [ApiController]
-[Route("api/GerenciadorDeArquivos/")]
+[Route("api/gerenciador/")]
 public class GerenciadorDeArquivosController : CoreController
 {
     private IGerenciadorDeArquivoAppService _appService;

@@ -1,6 +1,6 @@
 ﻿using Application.Inventario.ViewModels;
 using AutoMapper;
-using Domain.Authentication.Inventario.Entities;
+using Domain.Inventario.Entities;
 using Domain.Inventario.Commands;
 using Infra.Data.Inventario.DbViewModels;
 
@@ -12,9 +12,11 @@ public class InventarioMapProfile : Profile
     {
         //ViewModel to command
         CreateMap<CadastroProdutoViewModel, CadastrarProdutoCommand>();
+        CreateMap<AtualizarCaminhoFotoDeCapaViewModel, CaminhoFotoCapaCommand>();
 
         //Command to domain
         CreateMap<CadastrarProdutoCommand, Produto>();
+        CreateMap<CaminhoFotoCapaCommand, Produto>();
 
         //Domain to viewModel
         CreateMap<Produto, ProdutoViewModel>();
