@@ -1,10 +1,13 @@
-# Sobre o projeto
+# Sobre o projeto - ⚠ Em construção ⚠
 
 O projeto é uma Web API para um E-commerce, incorporando tecnologias em nuvem para potencializar sua escalabilidade e
 eficiência.
 Este projeto adota uma abordagem baseada no Domain-Driven Design (DDD), organizando-o em contextos específicos
 para otimizar a gestão e manutenção do sistema.
 
+## Confira também
+  * E-Commerce [FrontEnd](https://github.com/Regulus01/ECommerce)
+    
 ## O que é necessário para executar?
 
 Para iniciar o projeto localmente, é imprescindível seguir alguns passos essenciais. Primeiramente,
