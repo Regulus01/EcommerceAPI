@@ -1,6 +1,6 @@
 # Sobre o projeto
 
-O projeto é uma Web API para um marketplace, incorporando tecnologias em nuvem para potencializar sua escalabilidade e
+O projeto é uma Web API para um E-commerce, incorporando tecnologias em nuvem para potencializar sua escalabilidade e
 eficiência.
 Este projeto adota uma abordagem baseada no Domain-Driven Design (DDD), organizando-o em contextos específicos
 para otimizar a gestão e manutenção do sistema.
