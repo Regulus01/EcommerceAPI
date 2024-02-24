@@ -31,19 +31,53 @@ public class ProdutoRepository : BaseRepository<InventarioContext, ProdutoReposi
                     "from \"Inventario\".\"Produto\" p " +
                     $"offset {skip} limit {take}";
         
-        var produtos = _dbConnection.Query<DbProdutoListagemViewModel>(query);
+        var result = Query<DbProdutoListagemViewModel>(query);
+
+        return result;
+    }
+    
+    public IEnumerable<DbProdutoListagemViewModel> ObterMaisVisualizados()
+    {
+        var query = "select p.\"Pro_Id\", p.\"Pro_Nome\", p.\"Pro_Preco\", p.\"Pro_Estoque\", p.\"Ger_CaminhoFotoDeCapa\"" +
+                    "from \"Inventario\".\"Produto\" p " +
+                    "order by p.\"Visualizacoes\" desc " +
+                    "offset 0 limit 10";
+        
+        var result = Query<DbProdutoListagemViewModel>(query);
+
+        return result;
+    }
+    
+    public IEnumerable<DbProdutoListagemViewModel> ObterMaisRecentes()
+    {
+        var query = "select p.\"Pro_Id\", p.\"Pro_Nome\", p.\"Pro_Preco\", p.\"Pro_Estoque\", p.\"Ger_CaminhoFotoDeCapa\"" +
+                    "from \"Inventario\".\"Produto\" p " +
+                    "order by p.\"CriadoEm\" desc " +
+                    "offset 0 limit 10";
+        
+        var result = Query<DbProdutoListagemViewModel>(query);
+
+        return result;
+    }
+
+    public IEnumerable<DbProdutoListagemViewModel> ObterMelhoresDescontos()
+    {
+        var query = "select p.\"Pro_Id\", p.\"Pro_Nome\", p.\"Pro_Preco\", p.\"Pro_Estoque\", p.\"Ger_CaminhoFotoDeCapa\"" +
+                    "from \"Inventario\".\"Produto\" p " +
+                    "order by p.\"Pro_Preco\" desc " +
+                    "offset 0 limit 10";
+        
+        var result = Query<DbProdutoListagemViewModel>(query);
+
+        return result;
+    }
+    
+    private IEnumerable<T> Query<T>(string query) where T : class
+    {
+        var produtos = _dbConnection.Query<T>(query);
         
         _dbConnection.Close();
 
         return produtos;
-    }
-    
-    public List<ProdutoDomain> ObterProdutos(Expression<Func<ProdutoDomain, bool>> predicate, 
-                                    Expression<Func<ProdutoDomain, bool>> orderBy)
-    {
-        var query = _context.Produtos.Where(predicate)
-                                     .OrderBy(predicate);
-
-        return query.ToList();
     }
 }

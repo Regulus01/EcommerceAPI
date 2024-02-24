@@ -4,6 +4,7 @@
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -14,16 +15,6 @@
       <ProjectReference Include="..\Infra\Data\Infra.Configuration\Infra.Configuration.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <_ContentIncludedByDefault Remove="Service\obj\project.assets.json" />
-      <_ContentIncludedByDefault Remove="Service\obj\Service.csproj.nuget.dgspec.json" />
-    </ItemGroup>
-
-    <PropertyGroup>
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
-        <NoWarn>$(NoWarn);1591</NoWarn>
-    </PropertyGroup>
-    
     <Target Name="PostBuild" AfterTargets="PostBuildEvent">
         <ItemGroup>
             <SourceConfig Include="../Config/*.json" />

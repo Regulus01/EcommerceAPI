@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Application.Inventario.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Service.Inventario.Controllers;
@@ -38,19 +39,18 @@ public partial class ProdutoController
         
         return ApiResponse(response);
     }
-    
+
     /// <summary>
     ///    Obtem as arrais de ofertas do dia, promocoes, visualizados e mais vendidos
     /// </summary>
-    /// <param name="skip">Inicio da listagem</param>
-    /// <param name="take">Tamanho da listagem</param>
+    /// <param name="tipoDaListagemViewModel"></param>
     /// <returns>Lista com produtos</returns>
     [HttpGet]
     [Route("Grid")]
     [AllowAnonymous]
-    public IActionResult Grid([FromQuery] int skip, [FromQuery] int take)
+    public IActionResult Grid([FromQuery] TipoDaListagemViewModel tipoDaListagemViewModel)
     {
-        var response = _appService.Listagem(skip, take);
+        var response = _appService.Grid(tipoDaListagemViewModel);
         
         return ApiResponse(response);
     }

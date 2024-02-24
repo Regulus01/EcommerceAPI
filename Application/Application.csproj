@@ -5,21 +5,17 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <OutputType>Library</OutputType>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\CrossCutting\Util\CrossCutting.Util.Enums\CrossCutting.Util.Enums.csproj" />
-      <ProjectReference Include="..\CrossCutting\Util\Notifications\CrossCutting.Util.Notifications\CrossCutting.Util.Notifications.csproj" />
-      <ProjectReference Include="..\Domain\Domain\Domain.csproj" />
+        <ProjectReference Include="..\CrossCutting\Util\CrossCutting.Util.Enums\CrossCutting.Util.Enums.csproj"/>
+        <ProjectReference Include="..\CrossCutting\Util\Notifications\CrossCutting.Util.Notifications\CrossCutting.Util.Notifications.csproj"/>
+        <ProjectReference Include="..\Domain\Domain\Domain.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="AutoMapper" Version="12.0.1" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <_ContentIncludedByDefault Remove="Application\obj\Application.csproj.nuget.dgspec.json" />
-      <_ContentIncludedByDefault Remove="Application\obj\project.assets.json" />
+        <PackageReference Include="AutoMapper" Version="12.0.1"/>
     </ItemGroup>
 
 </Project>

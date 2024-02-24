@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Data.Common;
+using System.Reflection;
 using System.Text;
 using Amazon;
 using Amazon.Runtime;
@@ -36,6 +37,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using Npgsql;
 using Notifications = Infra.CrossCutting.Util.Notifications.Model.Notifications;
 
@@ -55,6 +57,7 @@ public class ConfigureServices
         RegisterDependencyInjection(serviceProvider);
         ConfigureMediatR(serviceProvider);
         ConfigureJwt(serviceProvider);
+        ConfigureSwagger(serviceProvider);
     }
 
     /// <summary>
@@ -104,21 +107,21 @@ public class ConfigureServices
         // Authentication
         serviceProvider.AddDbContext<AuthenticationContext>(opt =>
         {
-            opt.UseNpgsql(DbConnection, assembly =>
+            opt.UseNpgsql(DbConnection!, assembly =>
                 assembly.MigrationsAssembly(typeof(AuthenticationContext).Assembly.FullName));
         });
         
         //Inventario
         serviceProvider.AddDbContext<InventarioContext>(opt =>
         {
-            opt.UseNpgsql(DbConnection, assembly =>
+            opt.UseNpgsql(DbConnection!, assembly =>
                 assembly.MigrationsAssembly(typeof(InventarioContext).Assembly.FullName));
         });
         
         //Gerenciador de arquivos
         serviceProvider.AddDbContext<GerenciadorDeArquivosContext>(opt =>
         {
-            opt.UseNpgsql(DbConnection, assembly =>
+            opt.UseNpgsql(DbConnection!, assembly =>
                 assembly.MigrationsAssembly(typeof(GerenciadorDeArquivosContext).Assembly.FullName));
         });
     }
@@ -210,5 +213,50 @@ public class ConfigureServices
         serviceProvider.AddAuthorizationBuilder()
                        .AddPolicy(RoleRegister.Admin.Nome, policy => policy.RequireRole(RoleRegister.Admin.Nome));
     }
-    
+
+    /// <summary>
+    /// Configura o swagger da aplicação
+    /// </summary>
+    /// <param name="serviceCollection">O contêiner de IoC utilizado para registrar serviços.</param>
+    private static void ConfigureSwagger(IServiceCollection serviceCollection)
+    {
+        serviceCollection.AddSwaggerGen(c =>
+        {
+            c.SwaggerDoc("v1", new OpenApiInfo { Title = "MarketPlaceAPI", Version = "v1" });
+
+            var xmlFile = $"{Assembly.Load("Service").GetName().Name}.xml";
+            var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+            c.IncludeXmlComments(xmlPath);
+
+            var xmlFileApplication = $"{Assembly.Load("Application").GetName().Name}.xml";
+            var xmlPathApplication = Path.Combine(AppContext.BaseDirectory, xmlFileApplication);
+            c.IncludeXmlComments(xmlPathApplication);
+
+            c.UseInlineDefinitionsForEnums();
+            
+            c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+            {
+                Name = "Authorization",
+                Type = SecuritySchemeType.ApiKey,
+                Scheme = "Bearer",
+                BearerFormat = "JWT",
+                In = ParameterLocation.Header,
+                Description = "JWT Authorization header using the Bearer scheme",
+            });
+            c.AddSecurityRequirement(new OpenApiSecurityRequirement
+            {
+                {
+                    new OpenApiSecurityScheme
+                    {
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.SecurityScheme,
+                            Id = "Bearer"
+                        }
+                    },
+                    Array.Empty<string>()
+                }
+            });
+        });
+    }
 }

@@ -1,4 +1,5 @@
 ﻿using Application.Inventario.ViewModels;
+using Infra.Data.Inventario.DbViewModels;
 
 namespace Application.Inventario.Interface;
 
@@ -31,4 +32,11 @@ public interface IInventarioAppService
     /// <param name="take">Tamanho da listagem</param>
     /// <returns>Lista com produtos</returns>
     IEnumerable<ProdutoListagemViewModel> Listagem(int skip, int take);
+
+    /// <summary>
+    /// Obtém a listagem de produtos a partir do tipo informado
+    /// </summary>
+    /// <param name="tipoDaListagemViewModel"></param>
+    /// <returns></returns>
+    IEnumerable<ProdutoListagemViewModel> Grid(TipoDaListagemViewModel tipoDaListagemViewModel);
 }

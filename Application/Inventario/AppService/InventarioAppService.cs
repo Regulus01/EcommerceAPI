@@ -5,6 +5,7 @@ using Domain.Inventario.Commands;
 using Domain.Inventario.Interface;
 using Infra.CrossCutting.Util.Notifications.Implementation;
 using Infra.CrossCutting.Util.Notifications.Interface;
+using Infra.Data.Inventario.DbViewModels;
 using MediatR;
 
 namespace Application.Inventario.AppService;
@@ -97,10 +98,23 @@ public class InventarioAppService : IInventarioAppService
 
     public IEnumerable<ProdutoListagemViewModel> Grid(TipoDaListagemViewModel tipoDaListagemViewModel)
     {
-        if (tipoDaListagemViewModel == TipoDaListagemViewModel.OfertasDoDia)
+        return tipoDaListagemViewModel switch
         {
-        }
-
-        return null;
+            TipoDaListagemViewModel.MaisVisualizados =>
+                _mapper.Map<IEnumerable<ProdutoListagemViewModel>>(_produtoRepository.ObterMaisVisualizados()),
+            
+            TipoDaListagemViewModel.Novidades =>
+                _mapper.Map<IEnumerable<ProdutoListagemViewModel>>(_produtoRepository.ObterMaisRecentes()),
+            
+            //Todo: Alterar logica apos criar a coluna de quantida de vendas no produto
+            TipoDaListagemViewModel.MaisVendidos =>
+                _mapper.Map<IEnumerable<ProdutoListagemViewModel>>(_produtoRepository.ObterMaisRecentes()),
+            
+            //Todo: alterar logica apos criar a coluna de descontos em produto
+            TipoDaListagemViewModel.MelhoresDescontos => _mapper.Map<IEnumerable<ProdutoListagemViewModel>>(
+                _produtoRepository.ObterMelhoresDescontos()),
+            
+            _ => new List<ProdutoListagemViewModel>()
+        };
     }
 }
