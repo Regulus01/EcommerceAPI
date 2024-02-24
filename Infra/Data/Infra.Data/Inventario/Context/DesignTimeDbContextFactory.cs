@@ -1,9 +1,8 @@
-﻿using Infra.Data.Inventario.Context;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
-namespace Infra.Data.Produto.Context;
+namespace Infra.Data.Inventario.Context;
 
 public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<InventarioContext>
 {
