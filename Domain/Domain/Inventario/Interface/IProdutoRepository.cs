@@ -22,4 +22,6 @@ public interface IProdutoRepository : IBaseRepository
     /// <returns>Lista com produtos</returns>
     IEnumerable<DbProdutoListagemViewModel> Listagem(int skip, int take);
 
+    public List<Produto> ObterProdutos(Expression<Func<Produto, bool>> predicate, Expression<Func<Produto, bool>> orderBy);
+
 }

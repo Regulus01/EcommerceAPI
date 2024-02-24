@@ -1,6 +1,8 @@
-﻿namespace Domain.Authentication.Entities.Roles;
+﻿using Domain.Core.Entity;
 
-public class Role
+namespace Domain.Authentication.Entities.Roles;
+
+public class Role : BaseEntity
 {
     public Guid Id { get; private set; }
     public string Nome { get; private set; }

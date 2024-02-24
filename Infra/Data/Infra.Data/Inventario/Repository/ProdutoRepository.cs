@@ -37,4 +37,13 @@ public class ProdutoRepository : BaseRepository<InventarioContext, ProdutoReposi
 
         return produtos;
     }
+    
+    public List<ProdutoDomain> ObterProdutos(Expression<Func<ProdutoDomain, bool>> predicate, 
+                                    Expression<Func<ProdutoDomain, bool>> orderBy)
+    {
+        var query = _context.Produtos.Where(predicate)
+                                     .OrderBy(predicate);
+
+        return query.ToList();
+    }
 }

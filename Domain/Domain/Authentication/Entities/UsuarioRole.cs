@@ -1,10 +1,10 @@
 ﻿using Domain.Authentication.Entities.Roles;
+using Domain.Core.Entity;
 
 namespace Domain.Authentication.Entities;
 
-public class UsuarioRole
+public class UsuarioRole : BaseEntity
 {
-    public Guid Id { get; private set; }
     public Guid UsuarioId { get; private set; }
     public virtual Usuario Usuario { get; private set; }
     public Guid RoleId { get; private set; }

@@ -38,4 +38,20 @@ public partial class ProdutoController
         
         return ApiResponse(response);
     }
+    
+    /// <summary>
+    ///    Obtem as arrais de ofertas do dia, promocoes, visualizados e mais vendidos
+    /// </summary>
+    /// <param name="skip">Inicio da listagem</param>
+    /// <param name="take">Tamanho da listagem</param>
+    /// <returns>Lista com produtos</returns>
+    [HttpGet]
+    [Route("Grid")]
+    [AllowAnonymous]
+    public IActionResult Grid([FromQuery] int skip, [FromQuery] int take)
+    {
+        var response = _appService.Listagem(skip, take);
+        
+        return ApiResponse(response);
+    }
 }

@@ -1,8 +1,9 @@
-﻿namespace Domain.Inventario.Entities;
+﻿using Domain.Core.Entity;
 
-public class Categoria
+namespace Domain.Inventario.Entities;
+
+public class Categoria : BaseEntity
 {
-    public Guid Id { get; private set; }
     public string Nome { get; private set; }
     public virtual ICollection<Produto> Produtos { get; private set; }
 }

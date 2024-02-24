@@ -1,18 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Infra.Core.Base;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ProdutoDomain = Domain.Inventario.Entities.Produto;
 
 namespace Infra.Data.Inventario.Maps;
 
-public class ProdutoMap : IEntityTypeConfiguration<ProdutoDomain>
+public class ProdutoMap : BaseDomainMap<ProdutoDomain>
 {
-    public void Configure(EntityTypeBuilder<ProdutoDomain> builder)
+    public override void Configure(EntityTypeBuilder<ProdutoDomain> builder)
     {
-        builder.HasKey(x => x.Id);
-        builder.Property(x => x.Id)
-            .HasColumnName("Pro_Id")
-            .ValueGeneratedOnAdd();
-
         builder.Property(x => x.Nome)
             .HasColumnName("Pro_Nome")
             .IsRequired();

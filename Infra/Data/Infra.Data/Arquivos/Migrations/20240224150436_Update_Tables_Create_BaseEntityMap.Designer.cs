@@ -3,6 +3,7 @@ using System;
 using Infra.Data.Arquivos.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infra.Data.Arquivos.Migrations
 {
     [DbContext(typeof(GerenciadorDeArquivosContext))]
-    partial class GerenciadorDeArquivosContextModelSnapshot : ModelSnapshot
+    [Migration("20240224150436_Update_Tables_Create_BaseEntityMap")]
+    partial class Update_Tables_Create_BaseEntityMap
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

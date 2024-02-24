@@ -94,4 +94,13 @@ public class InventarioAppService : IInventarioAppService
         
         return _mapper.Map<IEnumerable<ProdutoListagemViewModel>>(produtos);;
     }
+
+    public IEnumerable<ProdutoListagemViewModel> Grid(TipoDaListagemViewModel tipoDaListagemViewModel)
+    {
+        if (tipoDaListagemViewModel == TipoDaListagemViewModel.OfertasDoDia)
+        {
+        }
+
+        return null;
+    }
 }

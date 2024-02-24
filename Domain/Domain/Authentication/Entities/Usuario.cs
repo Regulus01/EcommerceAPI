@@ -1,6 +1,8 @@
-﻿namespace Domain.Authentication.Entities;
+﻿using Domain.Core.Entity;
 
-public class Usuario
+namespace Domain.Authentication.Entities;
+
+public class Usuario : BaseEntity
 {
     public Guid Id { get; private set; }
     public string Nome { get; private set; }

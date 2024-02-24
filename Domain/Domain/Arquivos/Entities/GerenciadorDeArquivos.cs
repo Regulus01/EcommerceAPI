@@ -1,8 +1,9 @@
-﻿namespace Domain.Arquivos.Entities;
+﻿using Domain.Core.Entity;
 
-public class GerenciadorDeArquivos
+namespace Domain.Arquivos.Entities;
+
+public class GerenciadorDeArquivos : BaseEntity
 {
-    public Guid Id { get; private set; }
     public Guid EntidadeId { get; private set; }
     public string Entidade { get; private set; }
     public string? Caminho { get; private set; }
