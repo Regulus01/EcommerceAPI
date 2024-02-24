@@ -1,8 +1,8 @@
 ﻿using System.Data;
 using System.Linq.Expressions;
 using Dapper;
-using Domain.Base;
 using Domain.Inventario.Interface;
+using Infra.Core.Base;
 using Infra.Data.Inventario.Context;
 using Infra.Data.Inventario.DbViewModels;
 using Microsoft.Extensions.Logging;

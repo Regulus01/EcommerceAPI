@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
 using Domain.Arquivos.Entities;
 using Domain.Arquivos.Interfaces;
-using Domain.Base;
+using Infra.Core.Base;
 using Infra.Data.Arquivos.Context;
 using Microsoft.EntityFrameworkCore.Query;
 using Microsoft.Extensions.Logging;

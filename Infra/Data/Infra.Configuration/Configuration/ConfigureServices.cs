@@ -15,7 +15,6 @@ using Domain.Arquivos.Commands;
 using Domain.Arquivos.Interfaces;
 using Domain.Authentication.Commands;
 using Domain.Authentication.Configuration;
-using Domain.Authentication.Entities.Roles;
 using Domain.Entities.Roles;
 using Domain.Interface;
 using Domain.Inventario.Commands;

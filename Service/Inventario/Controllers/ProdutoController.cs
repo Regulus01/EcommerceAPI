@@ -1,7 +1,6 @@
 ﻿using Application.Inventario.Interface;
 using Application.Inventario.ViewModels;
 using CrossCutting.Util.Configuration.Core.Controllers;
-using Domain.Authentication.Entities.Roles;
 using Domain.Entities.Roles;
 using Infra.CrossCutting.Util.Notifications.Model;
 using MediatR;

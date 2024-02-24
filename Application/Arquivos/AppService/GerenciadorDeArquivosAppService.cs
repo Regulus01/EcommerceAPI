@@ -2,7 +2,6 @@
 using Application.Arquivos.ViewModels;
 using AutoMapper;
 using Domain.Arquivos.Commands;
-using Domain.Arquivos.Entities;
 using Domain.Arquivos.Interfaces;
 using Infra.CrossCutting.Util.Notifications.Implementation;
 using Infra.CrossCutting.Util.Notifications.Interface;

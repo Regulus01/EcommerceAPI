@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using Domain.Inventario.Entities;
 using Domain.Inventario.Commands;
+using Domain.Inventario.Entities;
 using Domain.Inventario.Interface;
 using Infra.CrossCutting.Util.Notifications.Implementation;
 using Infra.CrossCutting.Util.Notifications.Interface;

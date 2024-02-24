@@ -1,5 +1,4 @@
 ﻿using Application.Arquivos.ViewModels;
-using Domain.Arquivos.Entities;
 
 namespace Application.Arquivos.Interface;
 

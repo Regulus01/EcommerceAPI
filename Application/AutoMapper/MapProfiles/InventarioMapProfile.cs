@@ -1,7 +1,7 @@
 ﻿using Application.Inventario.ViewModels;
 using AutoMapper;
-using Domain.Inventario.Entities;
 using Domain.Inventario.Commands;
+using Domain.Inventario.Entities;
 using Infra.Data.Inventario.DbViewModels;
 
 namespace Application.AutoMapper.MapProfiles;

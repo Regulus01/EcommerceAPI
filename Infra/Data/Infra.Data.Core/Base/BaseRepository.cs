@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace Domain.Base;
+namespace Infra.Core.Base;
 
 public class BaseRepository<TContext, TL> where TContext : DbContext
 {

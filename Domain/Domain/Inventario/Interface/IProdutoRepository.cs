@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
-using Domain.Inventario.Entities;
 using Domain.Base;
+using Domain.Inventario.Entities;
 using Infra.Data.Inventario.DbViewModels;
 
 namespace Domain.Inventario.Interface;

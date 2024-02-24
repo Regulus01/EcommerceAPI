@@ -11,6 +11,7 @@
       <ProjectReference Include="..\CrossCutting\Util\CrossCutting.Util.Enums\CrossCutting.Util.Enums.csproj" />
       <ProjectReference Include="..\CrossCutting\Util\Notifications\CrossCutting.Util.Notifications\CrossCutting.Util.Notifications.csproj" />
       <ProjectReference Include="..\Domain\Domain.csproj" />
+      <ProjectReference Include="..\Domain\Domain\Domain.csproj" />
     </ItemGroup>
 
     <ItemGroup>

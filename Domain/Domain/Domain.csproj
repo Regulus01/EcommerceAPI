@@ -16,6 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\CrossCutting\Util\Notifications\CrossCutting.Util.Notifications\CrossCutting.Util.Notifications.csproj" />
+      <ProjectReference Include="..\..\CrossCutting\Util\Notifications\CrossCutting.Util.Notifications\CrossCutting.Util.Notifications.csproj" />
+      <ProjectReference Include="..\Domain.Core\Domain.Core.csproj" />
     </ItemGroup>
 </Project>
