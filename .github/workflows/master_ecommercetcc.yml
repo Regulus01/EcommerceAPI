@@ -37,11 +37,20 @@ jobs:
   deploy:
     runs-on: windows-latest
     needs: build
+    
+    
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
+      - name: Download appsettings.json 
+        run: |
+          mkdir config
+          git clone https://github.com/Regulus01/AppSettings.json --branch=master --single-branch config
+        env:
+          GIT_AUTH_TOKEN: ${{ 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 }}  
+          
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
