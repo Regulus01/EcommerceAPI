@@ -5,7 +5,6 @@ using Domain.Inventario.Commands;
 using Domain.Inventario.Interface;
 using Infra.CrossCutting.Util.Notifications.Implementation;
 using Infra.CrossCutting.Util.Notifications.Interface;
-using Infra.Data.Inventario.DbViewModels;
 using MediatR;
 
 namespace Application.Inventario.AppService;

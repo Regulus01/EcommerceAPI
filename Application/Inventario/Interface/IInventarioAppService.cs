@@ -1,5 +1,4 @@
 ﻿using Application.Inventario.ViewModels;
-using Infra.Data.Inventario.DbViewModels;
 
 namespace Application.Inventario.Interface;
 

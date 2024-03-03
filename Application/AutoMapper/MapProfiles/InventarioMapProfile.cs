@@ -1,8 +1,8 @@
 ﻿using Application.Inventario.ViewModels;
 using AutoMapper;
 using Domain.Inventario.Commands;
+using Domain.Inventario.DbViewModels;
 using Domain.Inventario.Entities;
-using Infra.Data.Inventario.DbViewModels;
 
 namespace Application.AutoMapper.MapProfiles;
 
@@ -23,7 +23,7 @@ public class InventarioMapProfile : Profile
 
         //View model to ViewModel
         CreateMap<DbProdutoListagemViewModel, ProdutoListagemViewModel>()
-            .ForMember(x => x.Id, opt => opt.MapFrom(x => x.Pro_Id))
+            .ForMember(x => x.Id, opt => opt.MapFrom(x => x.Id))
             .ForMember(x => x.Nome, opt => opt.MapFrom(x => x.Pro_Nome))
             .ForMember(x => x.Preco, opt => opt.MapFrom(x => x.Pro_Preco))
             .ForMember(x => x.Estoque, opt => opt.MapFrom(x => x.Pro_Estoque))

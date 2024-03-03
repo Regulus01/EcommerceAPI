@@ -1,8 +1,8 @@
-﻿namespace Infra.Data.Inventario.DbViewModels;
+﻿namespace Domain.Inventario.DbViewModels;
 
 public class DbProdutoListagemViewModel
 {
-    public Guid Pro_Id { get; set; }
+    public Guid Id { get; set; }
     
     public string Pro_Nome { get; set; }
     public int Pro_Estoque { get; set; }

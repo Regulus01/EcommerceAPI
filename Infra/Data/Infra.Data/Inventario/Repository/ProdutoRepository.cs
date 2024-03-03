@@ -1,10 +1,10 @@
 ﻿using System.Data;
 using System.Linq.Expressions;
 using Dapper;
+using Domain.Inventario.DbViewModels;
 using Domain.Inventario.Interface;
 using Infra.Core.Base;
 using Infra.Data.Inventario.Context;
-using Infra.Data.Inventario.DbViewModels;
 using Microsoft.Extensions.Logging;
 using ProdutoDomain = Domain.Inventario.Entities.Produto;
 
@@ -27,7 +27,7 @@ public class ProdutoRepository : BaseRepository<InventarioContext, ProdutoReposi
 
     public IEnumerable<DbProdutoListagemViewModel> Listagem(int skip, int take)
     {
-        var query = "select p.\"Pro_Id\", p.\"Pro_Nome\", p.\"Pro_Preco\", p.\"Pro_Estoque\", p.\"Ger_CaminhoFotoDeCapa\"" +
+        var query = "select p.\"Id\", p.\"Pro_Nome\", p.\"Pro_Preco\", p.\"Pro_Estoque\", p.\"Ger_CaminhoFotoDeCapa\"" +
                     "from \"Inventario\".\"Produto\" p " +
                     $"offset {skip} limit {take}";
         
@@ -38,7 +38,7 @@ public class ProdutoRepository : BaseRepository<InventarioContext, ProdutoReposi
     
     public IEnumerable<DbProdutoListagemViewModel> ObterMaisVisualizados()
     {
-        var query = "select p.\"Pro_Id\", p.\"Pro_Nome\", p.\"Pro_Preco\", p.\"Pro_Estoque\", p.\"Ger_CaminhoFotoDeCapa\"" +
+        var query = "select p.\"Id\", p.\"Pro_Nome\", p.\"Pro_Preco\", p.\"Pro_Estoque\", p.\"Ger_CaminhoFotoDeCapa\"" +
                     "from \"Inventario\".\"Produto\" p " +
                     "order by p.\"Visualizacoes\" desc " +
                     "offset 0 limit 10";
@@ -50,7 +50,7 @@ public class ProdutoRepository : BaseRepository<InventarioContext, ProdutoReposi
     
     public IEnumerable<DbProdutoListagemViewModel> ObterMaisRecentes()
     {
-        var query = "select p.\"Pro_Id\", p.\"Pro_Nome\", p.\"Pro_Preco\", p.\"Pro_Estoque\", p.\"Ger_CaminhoFotoDeCapa\"" +
+        var query = "select p.\"Id\", p.\"Pro_Nome\", p.\"Pro_Preco\", p.\"Pro_Estoque\", p.\"Ger_CaminhoFotoDeCapa\"" +
                     "from \"Inventario\".\"Produto\" p " +
                     "order by p.\"CriadoEm\" desc " +
                     "offset 0 limit 10";
@@ -62,7 +62,7 @@ public class ProdutoRepository : BaseRepository<InventarioContext, ProdutoReposi
 
     public IEnumerable<DbProdutoListagemViewModel> ObterMelhoresDescontos()
     {
-        var query = "select p.\"Pro_Id\", p.\"Pro_Nome\", p.\"Pro_Preco\", p.\"Pro_Estoque\", p.\"Ger_CaminhoFotoDeCapa\"" +
+        var query = "select p.\"Id\", p.\"Pro_Nome\", p.\"Pro_Preco\", p.\"Pro_Estoque\", p.\"Ger_CaminhoFotoDeCapa\"" +
                     "from \"Inventario\".\"Produto\" p " +
                     "order by p.\"Pro_Preco\" desc " +
                     "offset 0 limit 10";

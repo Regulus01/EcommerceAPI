@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
 using Domain.Base;
+using Domain.Inventario.DbViewModels;
 using Domain.Inventario.Entities;
-using Infra.Data.Inventario.DbViewModels;
 
 namespace Domain.Inventario.Interface;
 
