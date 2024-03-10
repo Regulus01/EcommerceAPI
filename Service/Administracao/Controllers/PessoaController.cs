@@ -1,4 +1,5 @@
-﻿using CrossCutting.Util.Configuration.Core.Controllers;
+﻿using Application.Administracao.Interface;
+using CrossCutting.Util.Configuration.Core.Controllers;
 using Infra.CrossCutting.Util.Notifications.Model;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -6,10 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 namespace Service.Administracao.Controllers;
 
 [ApiController]
-[Route("api/administracao/")]
-public class AdministracaoController : CoreController
+[Route("api/pessoa/")]
+public class PessoaController : CoreController
 {
-    public AdministracaoController(INotificationHandler<Notifications> notification) : base(notification)
+    private IPessoaAppService _appService;
+    
+    public PessoaController(INotificationHandler<Notifications> notification) : base(notification)
     {
     }
     /*

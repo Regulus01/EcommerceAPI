@@ -5,6 +5,8 @@ using System.Text;
 using Amazon;
 using Amazon.Runtime;
 using Amazon.S3;
+using Application.Administracao.AppService;
+using Application.Administracao.Interface;
 using Application.AppService;
 using Application.Arquivos.AppService;
 using Application.Arquivos.Interface;
@@ -12,6 +14,8 @@ using Application.AutoMapper;
 using Application.Interface;
 using Application.Inventario.AppService;
 using Application.Inventario.Interface;
+using Domain.Administracao.Commands.Pessoa;
+using Domain.Administracao.Interfaces;
 using Domain.Arquivos.Commands;
 using Domain.Arquivos.Interfaces;
 using Domain.Authentication.Commands;
@@ -24,6 +28,8 @@ using HttpAcessor;
 using Infra.CrossCutting.Util.Notifications.Handler;
 using Infra.CrossCutting.Util.Notifications.Implementation;
 using Infra.CrossCutting.Util.Notifications.Interface;
+using Infra.Data.Administracao.Context;
+using Infra.Data.Administracao.Repository;
 using Infra.Data.Arquivos.Context;
 using Infra.Data.Arquivos.Repository;
 using Infra.Data.Authentication.Context;
@@ -124,6 +130,13 @@ public class ConfigureServices
             opt.UseNpgsql(DbConnection!, assembly =>
                 assembly.MigrationsAssembly(typeof(GerenciadorDeArquivosContext).Assembly.FullName));
         });
+        
+        //Administracao
+        serviceProvider.AddDbContext<AdministracaoContext>(opt =>
+        {
+            opt.UseNpgsql(DbConnection!, assembly =>
+                assembly.MigrationsAssembly(typeof(AdministracaoContext).Assembly.FullName));
+        });
     }
     
     /// <summary>
@@ -161,6 +174,10 @@ public class ConfigureServices
         serviceProvider.AddScoped<IGerenciadorDeArquivoAppService, GerenciadorDeArquivosAppService>();
         serviceProvider.AddScoped<IGerenciadorDeArquivosRepository, GerenciadorDeArquivosRepository>();
         
+        //Administracao
+        serviceProvider.AddScoped<IPessoaAppService, PessoaAppService>();
+        serviceProvider.AddScoped<IPessoaRepository, PessoaRepository>();
+        
         //JWT - Token service 
         serviceProvider.AddTransient<TokenService>();
     }
@@ -184,6 +201,9 @@ public class ConfigureServices
             //Gerenciador de arquivos
             config.RegisterServicesFromAssemblies(typeof(GerenciadorDeArquivosCommand).Assembly);
             config.RegisterServicesFromAssemblies(typeof(DeletarArquivoCommand).Assembly);
+            
+            //Administracao
+            config.RegisterServicesFromAssemblies(typeof(CadastrarPessoaCommand).Assembly);
         });
     }
     
