@@ -1,4 +1,5 @@
 ﻿using Application.Administracao.Interface;
+using Application.Administracao.ViewModels;
 using CrossCutting.Util.Configuration.Core.Controllers;
 using Infra.CrossCutting.Util.Notifications.Model;
 using MediatR;
@@ -12,20 +13,20 @@ public class PessoaController : CoreController
 {
     private IPessoaAppService _appService;
     
-    public PessoaController(INotificationHandler<Notifications> notification) : base(notification)
+    public PessoaController(INotificationHandler<Notifications> notification, IPessoaAppService appService) : base(notification)
     {
+        _appService = appService;
     }
-    /*
+    
     /// <summary>
     ///  Cadastra uma pessoa no sistema
     /// </summary>
-    /// <returns>Url do arquivo</returns>
+    /// <returns>Id da pessoa criada</returns>
     [HttpPost]
-    [Route(("pessoa"))]
-    public async Task<IActionResult> CadastrarPessoa([FromForm] EnviarGerenciadorDeArquivoViewModel arquivo)
+    public IActionResult CadastrarPessoa([FromBody] CadastrarPessoaViewModel viewModel)
     {
-        var response = await _appService.EnviarArquivoS3(arquivo);
+        var response = _appService.CadastrarPessoa(viewModel);
         return ApiResponse(response);
-    }*/
+    }
     
 }
