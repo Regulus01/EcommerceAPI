@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Domain.Core.Entity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace Infra.Core.Base;
@@ -30,6 +31,17 @@ public class BaseRepository<TContext, TL> where TContext : DbContext
     
     public void Add<T>(T entity) where T : class
     {
+        if (entity.GetType().BaseType == typeof(BaseEntity))
+        {
+            var entityBase = entity as BaseEntity;
+            
+            if (entityBase?.CriadoEm != null && entityBase.CriadoEm == DateTimeOffset.MinValue)
+                entityBase.CriadoEm = DateTimeOffset.UtcNow;
+
+            if (entityBase != null) 
+                entityBase.ModificadoEm = DateTimeOffset.UtcNow;
+        }
+
         _context.Add(entity);
     }
     public void Update<T>(T entity) where T : class
