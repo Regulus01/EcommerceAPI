@@ -46,6 +46,12 @@ public class BaseRepository<TContext, TL> where TContext : DbContext
     }
     public void Update<T>(T entity) where T : class
     {
+        if (entity.GetType().BaseType == typeof(BaseEntity))
+        {
+            if (entity is BaseEntity entityBase) 
+                entityBase.ModificadoEm = DateTimeOffset.UtcNow;
+        }
+        
         _context.Update(entity);
     }
     public T? Find<T>(Guid id) where T : class
