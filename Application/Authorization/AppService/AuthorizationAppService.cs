@@ -64,6 +64,12 @@ public class AuthorizationAppService : IAuthorizationAppService
             return;
         }
 
+        if (viewModel.Cpf.Length != 11)
+        {
+            _notify.NewNotification("Erro", "Informe os 11 digitos do cpf");
+            return;
+        }
+        
         if (!ValidarEmail(viewModel.Email))
         {
             _notify.NewNotification("Erro", "Email invalido");
