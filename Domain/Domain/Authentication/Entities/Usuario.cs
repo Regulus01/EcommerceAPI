@@ -1,18 +1,20 @@
-﻿using Domain.Core.Entity;
+﻿using Domain.Authentication.Entities.Shared;
+using Domain.Core.Entity;
 
 namespace Domain.Authentication.Entities;
 
 public class Usuario : BaseEntity
 {
     public Guid Id { get; private set; }
-    public string Nome { get; private set; }
     public string Email { get; private set; }
     public string Password { get; private set; }
     public virtual ICollection<UsuarioRole> UsuarioRoles { get; private set; }
+    public Guid? PessoaId { get; private set; }
 
-    public Usuario(string nome, string email, string password)
+    public virtual Pessoa Pessoa { get; private set; }
+
+    public Usuario(string email, string password)
     {
-        Nome = nome;
         Email = email;
         Password = password;
     }

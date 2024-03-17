@@ -3,6 +3,7 @@ using Application.Administracao.ViewModels;
 using CrossCutting.Util.Configuration.Core.Controllers;
 using Infra.CrossCutting.Util.Notifications.Model;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Service.Administracao.Controllers;
@@ -23,6 +24,7 @@ public class PessoaController : CoreController
     /// </summary>
     /// <returns>Id da pessoa criada</returns>
     [HttpPost]
+    [AllowAnonymous]
     public IActionResult CadastrarPessoa([FromBody] CadastrarPessoaViewModel viewModel)
     {
         var response = _appService.CadastrarPessoa(viewModel);

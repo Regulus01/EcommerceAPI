@@ -180,6 +180,9 @@ public class ConfigureServices
         
         //JWT - Token service 
         serviceProvider.AddTransient<TokenService>();
+        
+        //Http client
+        serviceProvider.AddHttpClient();
     }
     
     /// <summary>

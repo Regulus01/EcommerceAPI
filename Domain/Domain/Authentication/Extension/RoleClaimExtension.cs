@@ -25,7 +25,6 @@ public static class RoleClaimExtension
         var claims = new List<Claim>
         {
             new (ClaimTypes.NameIdentifier, user.Id.ToString()),
-            new (ClaimTypes.Name, user.Nome),
             new (ClaimTypes.Email, user.Email)
         };
 

@@ -1,7 +1,6 @@
-﻿using Domain.Administracao.Entities.Shared;
-using Domain.Core.Entity;
+﻿using Domain.Core.Entity;
 
-namespace Domain.Administracao.Entities.Pessoa;
+namespace Domain.Authentication.Entities.Shared;
 
 public class Pessoa : BaseEntity
 {

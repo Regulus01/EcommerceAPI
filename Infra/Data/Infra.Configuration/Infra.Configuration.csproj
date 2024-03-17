@@ -21,7 +21,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\Application\Application.csproj" />
-      <ProjectReference Include="..\..\..\CrossCutting\Util\HttpAcessor\HttpAcessor\HttpAcessor.csproj" />
+      <ProjectReference Include="..\..\..\CrossCutting\Util\Http\HttpAcessor\HttpAcessor.csproj" />
       <ProjectReference Include="..\Infra.Data\Infra.Data.csproj" />
     </ItemGroup>
 

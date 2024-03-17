@@ -11,7 +11,7 @@ public interface IAuthorizationAppService
     /// <param name="message"></param>
     /// <returns>Token e refresh para autenticação</returns>
     TokenViewModel Login(LoginViewModel? message);
-    
+
     /// <summary>
     /// Método utilizado para cadastrar um usuário no sistema
     /// </summary>
@@ -19,5 +19,5 @@ public interface IAuthorizationAppService
     ///  Método que cadastrar um usuário no sistema, o usuário cadastrado terá por padrão a role de comprador
     /// </remarks>
     /// <param name="viewModel">Dados necessários para o cadastro do usuário</param>
-    void CadastrarUsuario(CadastroViewModel viewModel);
+    Task CadastrarUsuario(CadastroViewModel viewModel);
 }

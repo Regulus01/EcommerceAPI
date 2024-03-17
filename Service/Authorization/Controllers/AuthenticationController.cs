@@ -54,9 +54,9 @@ public class AuthenticationController : CoreController
     [HttpPost]
     [Route("cadastrar")]
     [AllowAnonymous]
-    public IActionResult CadastrarUsuario(CadastroViewModel viewModel)
+    public async Task<IActionResult> CadastrarUsuario(CadastroViewModel viewModel)
     {
-        _appService.CadastrarUsuario(viewModel);
+        await _appService.CadastrarUsuario(viewModel);
         
         return ApiResponse();
     }
