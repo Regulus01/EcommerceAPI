@@ -64,7 +64,7 @@ public class AuthorizationAppService : IAuthorizationAppService
             return;
         }
 
-        if (viewModel.Cpf.Length != 11)
+        if (string.IsNullOrEmpty(viewModel.Cpf))
         {
             _notify.NewNotification("Erro", "Informe os 11 digitos do cpf");
             return;
