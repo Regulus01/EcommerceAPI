@@ -5,6 +5,7 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <AWSProjectType>Lambda</AWSProjectType>
     </PropertyGroup>
 
     <ItemGroup>
@@ -13,6 +14,10 @@
       <ProjectReference Include="..\CrossCutting\Util\Notifications\CrossCutting.Util.Notifications\CrossCutting.Util.Notifications.csproj" />
       <ProjectReference Include="..\Domain\Domain\Domain.csproj" />
       <ProjectReference Include="..\Infra\Data\Infra.Configuration\Infra.Configuration.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Amazon.Lambda.AspNetCoreServer.Hosting" Version="1.7.0" />
     </ItemGroup>
 
     <Target Name="PostBuild" AfterTargets="PostBuildEvent">

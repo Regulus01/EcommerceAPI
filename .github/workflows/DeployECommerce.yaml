@@ -1,0 +1,6 @@
+﻿name: Deploy lambda Ecommerce
+
+on:
+  push:
+    branches:
+      - master

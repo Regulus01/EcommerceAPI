@@ -1,0 +1,21 @@
+
+{
+    "region" : "us-east-1",
+    "profile" : "Jose01",
+    "configuration" : "Release",
+    "framework"     : "net8.0",
+    "function-name" : "ECommerceApi",
+    "function-description" : "Web api ecommerce",
+    "package-type"         : "Zip",
+    "function-handler"     : "Service",
+    "function-memory-size" : 256,
+    "function-role"        : "arn:aws:iam::471112562131:role/lambda_exec_ECommerceApi",
+    "function-timeout"     : 40,
+    "function-runtime"     : "dotnet8",
+    "function-architecture" : "x86_64",
+    "function-subnets"      : "",
+    "function-security-groups" : "",
+    "tracing-mode"             : "PassThrough",
+    "environment-variables"    : "\"ASPNETCORE_ENVIRONMENT\"=\"Development\";\"ECOMMERCE_PORT\"=\"https://samhqqccjkdegytm636kisusry0nvbzl.lambda-url.us-east-1.on.aws\"",
+    "image-tag"                : ""
+}
