@@ -1,0 +1,87 @@
+# This AWS SAM template has been generated from your function's configuration. If
+# your function has one or more triggers, note that the AWS resources associated
+# with these triggers aren't fully specified in this template and include
+# placeholder values. Open this template in AWS Application Composer or your
+# favorite IDE and modify it to specify a serverless application with other AWS
+# resources.
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: An AWS Serverless Application Model template describing your function.
+Resources:
+  ECommerceApi:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Description: Web api ecommerce
+      MemorySize: 256
+      Timeout: 40
+      Handler: Service
+      Runtime: dotnet8
+      Architectures:
+        - x86_64
+      EphemeralStorage:
+        Size: 512
+      Environment:
+        Variables:
+          ASPNETCORE_ENVIRONMENT: Development
+          ECOMMERCE_PORT: https://samhqqccjkdegytm636kisusry0nvbzl.lambda-url.us-east-1.on.aws
+      EventInvokeConfig:
+        MaximumEventAgeInSeconds: 21600
+        MaximumRetryAttempts: 2
+      PackageType: Zip
+      Policies:
+        - Statement:
+            - Effect: Allow
+              Action:
+                - logs:CreateLogGroup
+                - logs:CreateLogStream
+                - logs:PutLogEvents
+              Resource: '*'
+            - Effect: Allow
+              Action:
+                - cloudformation:DescribeStacks
+                - cloudformation:ListStackResources
+                - cloudwatch:ListMetrics
+                - cloudwatch:GetMetricData
+                - ec2:DescribeSecurityGroups
+                - ec2:DescribeSubnets
+                - ec2:DescribeVpcs
+                - kms:ListAliases
+                - iam:GetPolicy
+                - iam:GetPolicyVersion
+                - iam:GetRole
+                - iam:GetRolePolicy
+                - iam:ListAttachedRolePolicies
+                - iam:ListRolePolicies
+                - iam:ListRoles
+                - lambda:*
+                - logs:DescribeLogGroups
+                - states:DescribeStateMachine
+                - states:ListStateMachines
+                - tag:GetResources
+                - xray:GetTraceSummaries
+                - xray:BatchGetTraces
+              Resource: '*'
+            - Effect: Allow
+              Action:
+                - iam:PassRole
+              Resource: '*'
+              Condition:
+                StringEquals:
+                  iam:PassedToService: lambda.amazonaws.com
+            - Effect: Allow
+              Action:
+                - logs:DescribeLogStreams
+                - logs:GetLogEvents
+                - logs:FilterLogEvents
+              Resource: arn:aws:logs:*:*:log-group:/aws/lambda/*
+      SnapStart:
+        ApplyOn: None
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: ANY
+      RuntimeManagementConfig:
+        UpdateRuntimeOn: Auto

@@ -12,6 +12,7 @@ public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<Administra
 
         var configuration = new ConfigurationBuilder().AddJsonFile(fileName).Build();
         var connectionString = configuration.GetConnectionString("App");
+        connectionString += Environment.GetEnvironmentVariable("DATABASE_SECRET");
         
         Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine("Utilizando conexão -> " + connectionString);

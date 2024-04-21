@@ -78,6 +78,8 @@ public class ConfigureServices
                             .Build();
 
         var connectionString = ConfigurationRoot.GetConnectionString("app");
+        connectionString += Environment.GetEnvironmentVariable("DATABASE_SECRET");
+        
         
         DbConnection = new NpgsqlConnection(connectionString);
         
@@ -93,7 +95,7 @@ public class ConfigureServices
         var awsConnectionString = ConfigurationRoot?.GetConnectionString("AwsS3")?.Split(";");
         
         var awsKey = awsConnectionString?[0].Split("key=")[1];
-        var awsKeySecret = awsConnectionString?[1].Split("secret=")[1];
+        var awsKeySecret = Environment.GetEnvironmentVariable("S3_SECRET");
         
         var awsCredentials = new BasicAWSCredentials(awsKey, awsKeySecret);
         var config = new AmazonS3Config
