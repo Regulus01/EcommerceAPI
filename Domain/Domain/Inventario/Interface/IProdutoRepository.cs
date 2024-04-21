@@ -22,7 +22,7 @@ public interface IProdutoRepository : IBaseRepository
     /// <returns>Lista com produtos</returns>
     IEnumerable<DbProdutoListagemViewModel> Listagem(int skip, int take);
     
-    public IEnumerable<DbProdutoListagemViewModel> ObterMaisVisualizados();
+    IEnumerable<DbProdutoListagemViewModel> ObterMaisVisualizados();
     IEnumerable<DbProdutoListagemViewModel> ObterMaisRecentes();
     IEnumerable<DbProdutoListagemViewModel> ObterMelhoresDescontos();
 

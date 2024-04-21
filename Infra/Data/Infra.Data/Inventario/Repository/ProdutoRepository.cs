@@ -38,7 +38,7 @@ public class ProdutoRepository : BaseRepository<InventarioContext, ProdutoReposi
     
     public IEnumerable<DbProdutoListagemViewModel> ObterMaisVisualizados()
     {
-        var query = "select p.\"Id\", p.\"Pro_Nome\", p.\"Pro_Preco\", p.\"Pro_Estoque\", p.\"Ger_CaminhoFotoDeCapa\"" +
+        var query = "select p.\"Id\", p.\"Pro_Nome\", p.\"Pro_Preco\", p.\"Pro_Estoque\", p.\"Ger_CaminhoFotoDeCapa\", p.\"Pro_Classificacao\"" +
                     "from \"Inventario\".\"Produto\" p " +
                     "order by p.\"Visualizacoes\" desc " +
                     "offset 0 limit 10";
@@ -50,7 +50,7 @@ public class ProdutoRepository : BaseRepository<InventarioContext, ProdutoReposi
     
     public IEnumerable<DbProdutoListagemViewModel> ObterMaisRecentes()
     {
-        var query = "select p.\"Id\", p.\"Pro_Nome\", p.\"Pro_Preco\", p.\"Pro_Estoque\", p.\"Ger_CaminhoFotoDeCapa\"" +
+        var query = "select p.\"Id\", p.\"Pro_Nome\", p.\"Pro_Preco\", p.\"Pro_Estoque\", p.\"Ger_CaminhoFotoDeCapa\", p.\"Pro_Classificacao\"" +
                     "from \"Inventario\".\"Produto\" p " +
                     "order by p.\"CriadoEm\" desc " +
                     "offset 0 limit 10";
@@ -62,7 +62,7 @@ public class ProdutoRepository : BaseRepository<InventarioContext, ProdutoReposi
 
     public IEnumerable<DbProdutoListagemViewModel> ObterMelhoresDescontos()
     {
-        var query = "select p.\"Id\", p.\"Pro_Nome\", p.\"Pro_Preco\", p.\"Pro_Estoque\", p.\"Ger_CaminhoFotoDeCapa\"" +
+        var query = "select p.\"Id\", p.\"Pro_Nome\", p.\"Pro_Preco\", p.\"Pro_Estoque\", p.\"Ger_CaminhoFotoDeCapa\", p.\"Pro_Classificacao\"" +
                     "from \"Inventario\".\"Produto\" p " +
                     "order by p.\"Pro_Preco\" desc " +
                     "offset 0 limit 10";

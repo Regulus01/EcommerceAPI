@@ -20,7 +20,14 @@ public class ProdutoMap : BaseDomainMap<ProdutoDomain>
         builder.Property(x => x.Estoque)
             .HasColumnName("Pro_Estoque")
             .HasDefaultValue(0);
+        
+        builder.Property(x => x.Descricao)
+            .HasColumnName("Pro_Descricao");
 
+        builder.Property(x => x.Classificacao)
+            .HasColumnName("Pro_Classificacao")
+            .HasMaxLength(1);
+            
         builder.Property(x => x.CaminhoFotoDeCapa)
             .HasColumnName("Ger_CaminhoFotoDeCapa");
         

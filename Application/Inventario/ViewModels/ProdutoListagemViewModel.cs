@@ -9,4 +9,5 @@ public class ProdutoListagemViewModel
     public decimal Preco { get; set; }
     public int Estoque { get; set; }
     public string FotoDeCapa { get; set; }
+    public int Classificacao { get; set; }
 }

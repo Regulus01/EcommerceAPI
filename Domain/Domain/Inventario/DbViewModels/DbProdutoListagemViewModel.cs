@@ -9,4 +9,5 @@ public class DbProdutoListagemViewModel
 
     public decimal Pro_Preco { get; set; }
     public string Ger_CaminhoFotoDeCapa { get; set; }
+    public int Pro_Classificacao { get; set; }
 }

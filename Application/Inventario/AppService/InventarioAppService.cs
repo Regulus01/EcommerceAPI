@@ -92,7 +92,7 @@ public class InventarioAppService : IInventarioAppService
         
         var produtos = _produtoRepository.Listagem(skip, take);
         
-        return _mapper.Map<IEnumerable<ProdutoListagemViewModel>>(produtos);;
+        return _mapper.Map<IEnumerable<ProdutoListagemViewModel>>(produtos);
     }
 
     public IEnumerable<ProdutoListagemViewModel> Grid(TipoDaListagemViewModel tipoDaListagemViewModel)
