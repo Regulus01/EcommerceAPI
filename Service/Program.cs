@@ -10,6 +10,9 @@ ConfigureServices.Register(builder.Services);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
+//Aws 
+builder.Services.AddAWSLambdaHosting(LambdaEventSource.RestApi);
+
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(corsPolicy =>
@@ -19,10 +22,6 @@ builder.Services.AddCors(options =>
                   .AllowAnyHeader();
     });
 });
-
-//Aws 
-builder.Services.AddAWSLambdaHosting(LambdaEventSource.HttpApi);
-
 
 builder.Services.AddDataProtection().UseCryptographicAlgorithms(
     new AuthenticatedEncryptorConfiguration

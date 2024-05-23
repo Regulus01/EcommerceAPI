@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "CrossCutting.Util.Notifications": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:57378;http://localhost:57379"
+    }
+  }
+}
